@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cvhx7lur1yttj"]
+
+[ext_resource type="Script" uid="uid://bquxm25optta7" path="res://obj_mananger.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://d4moy76nup1f7" path="res://obj.tscn" id="2_h2yge"]
+
+[node name="Main" type="Node2D" unique_id=1758480046]
+
+[node name="ObjMananger" type="Node2D" parent="." unique_id=1469347821]
+script = ExtResource("1_0xm2m")
+
+[node name="Obj" parent="ObjMananger" unique_id=1021258095 instance=ExtResource("2_h2yge")]
+position = Vector2(148, 139)
+
+[node name="Obj2" parent="ObjMananger" unique_id=1465355096 instance=ExtResource("2_h2yge")]
+position = Vector2(260, 331)
+
+[node name="Obj3" parent="ObjMananger" unique_id=1260791783 instance=ExtResource("2_h2yge")]
+position = Vector2(386, 161)
