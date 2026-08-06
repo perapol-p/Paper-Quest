@@ -1,17 +1,26 @@
 [gd_scene format=3 uid="uid://cvhx7lur1yttj"]
 
 [ext_resource type="Script" uid="uid://bquxm25optta7" path="res://obj_mananger.gd" id="1_0xm2m"]
-[ext_resource type="PackedScene" path="res://quests/quest_inspect.tscn" id="1_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://omuyraf6ivl" path="res://quests/quest_inspect.tscn" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://d4moy76nup1f7" path="res://obj.tscn" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://bxtdauvato0gn" path="res://quests/quest_inspect.gd" id="2_lquwl"]
 [ext_resource type="PackedScene" uid="uid://c6b1q7v8x2m3n" path="res://quests/quest_board.tscn" id="3_qboard"]
 
 [node name="Main" type="Node2D" unique_id=1758480046]
 
-[node name="QuestInspect" parent="." unique_id=1160849210 instance=ExtResource("1_1bvp3")]
+[node name="QuestInspect" type="Control" parent="." unique_id=1160849210 instance=ExtResource("1_1bvp3")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 578.0
 offset_top = 328.0
 offset_right = 578.0
 offset_bottom = 328.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("2_lquwl")
 
 [node name="QuestBoard" parent="." unique_id=443051214 instance=ExtResource("3_qboard")]
 visible = false
