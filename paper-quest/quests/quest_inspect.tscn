@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://omuyraf6ivl"]
 
 [ext_resource type="Script" uid="uid://bxtdauvato0gn" path="res://quests/quest_inspect.gd" id="1_inspect"]
-[ext_resource type="Texture2D" uid="uid://b6uittb27wyib" path="res://Assets/Export/BG/Table BG/Table.png" id="2_table"]
-[ext_resource type="Texture2D" uid="uid://dur6vo8ws2i3x" path="res://Assets/Export/BG/Table BG/Placemat.png" id="3_placemat"]
-[ext_resource type="Texture2D" uid="uid://c1ify16ddr7bx" path="res://Assets/Export/Items/Big/Paper.png" id="4_paper"]
+[ext_resource type="Texture2D" uid="uid://caflij2t4ghfg" path="res://Assets/Picture/Table BG/Table.png" id="2_utk6s"]
+[ext_resource type="Texture2D" uid="uid://burheb4vxa5m1" path="res://Assets/Picture/Table BG/Placemat.png" id="3_mor5c"]
+[ext_resource type="Texture2D" uid="uid://c2vkaavr0ljfo" path="res://Assets/Picture/Items/Big/Paper.png" id="4_2eteg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_badge"]
 bg_color = Color(0.541, 0.157, 0.145, 1)
@@ -49,10 +49,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -246.0
+offset_top = -54.0
+offset_right = -111.55554
+offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("2_table")
+texture = ExtResource("2_utk6s")
 expand_mode = 1
 stretch_mode = 6
 
@@ -61,10 +65,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -169.0
+offset_top = 2.0
+offset_right = -169.0
+offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("3_placemat")
+texture = ExtResource("3_mor5c")
 expand_mode = 1
 stretch_mode = 6
 
@@ -73,15 +81,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -66.0
-offset_top = 33.0
-offset_right = 48.0
-offset_bottom = 20.0
+offset_left = 79.0
+offset_top = 47.0
+offset_right = -282.0
+offset_bottom = -68.45093
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("4_paper")
-expand_mode = 1
+texture = ExtResource("4_2eteg")
 stretch_mode = 6
 
 [node name="Content" type="MarginContainer" parent="Center/Panel" unique_id=986335782]
@@ -175,4 +182,5 @@ offset_left = -46.0
 offset_top = 6.0
 offset_right = -6.0
 offset_bottom = 46.0
+grow_horizontal = 0
 text = "×"
