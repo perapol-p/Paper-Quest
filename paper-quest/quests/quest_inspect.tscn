@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene format=3 uid="uid://omuyraf6ivl"]
 
-[ext_resource type="Script" path="res://quests/quest_inspect.gd" id="1_inspect"]
-[ext_resource type="Texture2D" path="res://Assets/Export/BG/Table BG/Table.png" id="2_table"]
-[ext_resource type="Texture2D" path="res://Assets/Export/BG/Table BG/Placemat.png" id="3_placemat"]
-[ext_resource type="Texture2D" path="res://Assets/Export/Items/Big/Paper.png" id="4_paper"]
+[ext_resource type="Script" uid="uid://bxtdauvato0gn" path="res://quests/quest_inspect.gd" id="1_inspect"]
+[ext_resource type="Texture2D" uid="uid://b6uittb27wyib" path="res://Assets/Export/BG/Table BG/Table.png" id="2_table"]
+[ext_resource type="Texture2D" uid="uid://dur6vo8ws2i3x" path="res://Assets/Export/BG/Table BG/Placemat.png" id="3_placemat"]
+[ext_resource type="Texture2D" uid="uid://c1ify16ddr7bx" path="res://Assets/Export/Items/Big/Paper.png" id="4_paper"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_badge"]
 bg_color = Color(0.541, 0.157, 0.145, 1)
@@ -12,7 +12,7 @@ corner_radius_top_right = 32
 corner_radius_bottom_right = 32
 corner_radius_bottom_left = 32
 
-[node name="QuestInspect" type="Control"]
+[node name="QuestInspect" type="Control" unique_id=16423958]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,56 +22,71 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_inspect")
 
-[node name="Dim" type="ColorRect" parent="."]
+[node name="Dim" type="ColorRect" parent="." unique_id=294706371]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 0.55)
 
-[node name="Center" type="CenterContainer" parent="."]
+[node name="Center" type="CenterContainer" parent="." unique_id=398861299]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 
-[node name="Panel" type="Control" parent="Center"]
+[node name="Panel" type="Control" parent="Center" unique_id=5888106]
 custom_minimum_size = Vector2(660, 540)
 layout_mode = 2
 
-[node name="TableBG" type="TextureRect" parent="Center/Panel"]
+[node name="TableBG" type="TextureRect" parent="Center/Panel" unique_id=1760450046]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("2_table")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Placemat" type="TextureRect" parent="Center/Panel"]
+[node name="Placemat" type="TextureRect" parent="Center/Panel" unique_id=885343813]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("3_placemat")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Paper" type="TextureRect" parent="Center/Panel"]
+[node name="Paper" type="TextureRect" parent="Center/Panel" unique_id=63595030]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -66.0
+offset_top = 33.0
+offset_right = 48.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("4_paper")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Content" type="MarginContainer" parent="Center/Panel"]
+[node name="Content" type="MarginContainer" parent="Center/Panel" unique_id=986335782]
 layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.14
 anchor_top = 0.13
 anchor_right = 0.56
@@ -82,84 +97,78 @@ theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="VBox" type="VBoxContainer" parent="Center/Panel/Content"]
+[node name="VBox" type="VBoxContainer" parent="Center/Panel/Content" unique_id=1635500887]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 8
 
-[node name="TitleLabel" type="Label" parent="Center/Panel/Content/VBox"]
+[node name="TitleLabel" type="Label" parent="Center/Panel/Content/VBox" unique_id=1589537091]
 layout_mode = 2
-mouse_filter = 2
-theme_override_font_sizes/font_size = 24
 theme_override_colors/font_color = Color(0.302, 0.129, 0.055, 1)
 theme_override_colors/font_outline_color = Color(0.99, 0.93, 0.8, 0.6)
 theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 24
+text = "ชื่อเควส"
 horizontal_alignment = 1
 autowrap_mode = 2
-text = "ชื่อเควส"
 
-[node name="HSeparator1" type="HSeparator" parent="Center/Panel/Content/VBox"]
+[node name="HSeparator1" type="HSeparator" parent="Center/Panel/Content/VBox" unique_id=288685348]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="DescLabel" type="Label" parent="Center/Panel/Content/VBox"]
+[node name="DescLabel" type="Label" parent="Center/Panel/Content/VBox" unique_id=741617073]
 layout_mode = 2
-mouse_filter = 2
-theme_override_font_sizes/font_size = 14
 theme_override_colors/font_color = Color(0.298, 0.22, 0.153, 1)
-autowrap_mode = 3
+theme_override_font_sizes/font_size = 14
 text = "รายละเอียดเควส"
+autowrap_mode = 3
 
-[node name="HSeparator2" type="HSeparator" parent="Center/Panel/Content/VBox"]
+[node name="HSeparator2" type="HSeparator" parent="Center/Panel/Content/VBox" unique_id=996741300]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="TargetLabel" type="Label" parent="Center/Panel/Content/VBox"]
+[node name="TargetLabel" type="Label" parent="Center/Panel/Content/VBox" unique_id=1631546481]
 layout_mode = 2
-mouse_filter = 2
-theme_override_font_sizes/font_size = 16
 theme_override_colors/font_color = Color(0.541, 0.157, 0.145, 1)
-autowrap_mode = 2
+theme_override_font_sizes/font_size = 16
 text = "เป้าหมาย: - x0"
+autowrap_mode = 2
 
-[node name="RewardLabel" type="Label" parent="Center/Panel/Content/VBox"]
+[node name="RewardLabel" type="Label" parent="Center/Panel/Content/VBox" unique_id=1499296996]
 layout_mode = 2
-mouse_filter = 2
-theme_override_font_sizes/font_size = 16
 theme_override_colors/font_color = Color(0.541, 0.157, 0.145, 1)
+theme_override_font_sizes/font_size = 16
 text = "รางวัล: 0 Gold"
 
-[node name="RankRow" type="HBoxContainer" parent="Center/Panel/Content/VBox"]
+[node name="RankRow" type="HBoxContainer" parent="Center/Panel/Content/VBox" unique_id=280676079]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 10
 
-[node name="RankBadge" type="PanelContainer" parent="Center/Panel/Content/VBox/RankRow"]
+[node name="RankBadge" type="PanelContainer" parent="Center/Panel/Content/VBox/RankRow" unique_id=1485810314]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_badge")
 
-[node name="RankBadgeLabel" type="Label" parent="Center/Panel/Content/VBox/RankRow/RankBadge"]
+[node name="RankBadgeLabel" type="Label" parent="Center/Panel/Content/VBox/RankRow/RankBadge" unique_id=525346458]
 layout_mode = 2
-mouse_filter = 2
-theme_override_font_sizes/font_size = 26
 theme_override_colors/font_color = Color(0.99, 0.93, 0.8, 1)
+theme_override_font_sizes/font_size = 26
+text = "F"
 horizontal_alignment = 1
 vertical_alignment = 1
-text = "F"
 
-[node name="RankTextLabel" type="Label" parent="Center/Panel/Content/VBox/RankRow"]
+[node name="RankTextLabel" type="Label" parent="Center/Panel/Content/VBox/RankRow" unique_id=1405121451]
 layout_mode = 2
-size_flags_vertical = 4
-mouse_filter = 2
-theme_override_font_sizes/font_size = 14
 theme_override_colors/font_color = Color(0.541, 0.157, 0.145, 1)
-autowrap_mode = 2
+theme_override_font_sizes/font_size = 14
 text = "ประเภท | เงื่อนไข"
+autowrap_mode = 2
 
-[node name="CloseButton" type="Button" parent="Center/Panel"]
+[node name="CloseButton" type="Button" parent="Center/Panel" unique_id=550196474]
 layout_mode = 1
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -46.0

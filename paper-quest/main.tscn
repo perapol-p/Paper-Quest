@@ -1,12 +1,20 @@
 [gd_scene format=3 uid="uid://cvhx7lur1yttj"]
 
 [ext_resource type="Script" uid="uid://bquxm25optta7" path="res://obj_mananger.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" path="res://quests/quest_inspect.tscn" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://d4moy76nup1f7" path="res://obj.tscn" id="2_h2yge"]
-[ext_resource type="PackedScene" path="res://quests/quest_board.tscn" id="3_qboard"]
+[ext_resource type="PackedScene" uid="uid://c6b1q7v8x2m3n" path="res://quests/quest_board.tscn" id="3_qboard"]
 
 [node name="Main" type="Node2D" unique_id=1758480046]
 
-[node name="QuestBoard" parent="." instance=ExtResource("3_qboard")]
+[node name="QuestInspect" parent="." unique_id=1160849210 instance=ExtResource("1_1bvp3")]
+offset_left = 578.0
+offset_top = 328.0
+offset_right = 578.0
+offset_bottom = 328.0
+
+[node name="QuestBoard" parent="." unique_id=443051214 instance=ExtResource("3_qboard")]
+visible = false
 
 [node name="ObjMananger" type="Node2D" parent="." unique_id=1469347821]
 script = ExtResource("1_0xm2m")
@@ -15,7 +23,7 @@ script = ExtResource("1_0xm2m")
 position = Vector2(148, 139)
 
 [node name="Obj2" parent="ObjMananger" unique_id=1465355096 instance=ExtResource("2_h2yge")]
-position = Vector2(260, 331)
+position = Vector2(150, 372)
 
 [node name="Obj3" parent="ObjMananger" unique_id=1260791783 instance=ExtResource("2_h2yge")]
-position = Vector2(386, 161)
+position = Vector2(136, 253)
