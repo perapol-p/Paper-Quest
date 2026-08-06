@@ -2,8 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bquxm25optta7" path="res://obj_mananger.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://d4moy76nup1f7" path="res://obj.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" path="res://quests/quest_board.tscn" id="3_qboard"]
 
 [node name="Main" type="Node2D" unique_id=1758480046]
+
+[node name="QuestBoard" parent="." instance=ExtResource("3_qboard")]
 
 [node name="ObjMananger" type="Node2D" parent="." unique_id=1469347821]
 script = ExtResource("1_0xm2m")
