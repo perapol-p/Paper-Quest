@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://c6b1q7v8x2m3n"]
+
+[ext_resource type="Script" uid="uid://cjdqjae6mmk5y" path="res://quests/quest_board.gd" id="1_board"]
+
+[node name="QuestBoard" type="Control" unique_id=539867868]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_board")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=759977850]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 1180.0
+offset_bottom = 660.0
+
+[node name="QuestContainer" type="HFlowContainer" parent="ScrollContainer" unique_id=199806167]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
