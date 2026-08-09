@@ -7,15 +7,16 @@ class_name QuestInspect
 ## แต่ถ้าเปิดหน้านี้ขึ้นมาลอย ๆ โดยไม่มีใครส่งข้อมูลมาให้ (data == null)
 ## จะสุ่มข้อมูลเควสขึ้นมาเองเพียงครั้งเดียวตอนเปิดหน้านี้ (เผื่อไว้ใช้ทดสอบ/เรียกตรง ๆ)
 ## แสดงผลอย่างเดียว ไม่มีปุ่ม Take/Turn ตามระบบเดิม
+## เฉพาะตัวกระดาษ (PaperInfo) เท่านั้นที่ลากไปมาได้ — ดูโค้ดการลากใน paper_info.gd
 
 var quest_data: QuestData
 
-@onready var title_label: Label = $Center/Panel/Content/VBox/TitleLabel
-@onready var desc_label: Label = $Center/Panel/Content/VBox/DescLabel
-@onready var target_label: Label = $Center/Panel/Content/VBox/TargetLabel
-@onready var reward_label: Label = $Center/Panel/Content/VBox/RewardLabel
-@onready var rank_badge_label: Label = $Center/Panel/Content/VBox/RankRow/RankBadge/RankBadgeLabel
-@onready var rank_text_label: Label = $Center/Panel/Content/VBox/RankRow/RankTextLabel
+@onready var title_label: Label = $Center/Panel/PaperInfo/Content/VBox/TitleLabel
+@onready var desc_label: Label = $Center/Panel/PaperInfo/Content/VBox/DescLabel
+@onready var target_label: Label = $Center/Panel/PaperInfo/Content/VBox/TargetLabel
+@onready var reward_label: Label = $Center/Panel/PaperInfo/Content/VBox/RewardLabel
+@onready var rank_badge_label: Label = $Center/Panel/PaperInfo/Content/VBox/RankRow/RankBadge/RankBadgeLabel
+@onready var rank_text_label: Label = $Center/Panel/PaperInfo/Content/VBox/RankRow/RankTextLabel
 @onready var close_button: Button = $Center/Panel/CloseButton
 @onready var dim: ColorRect = $Dim
 

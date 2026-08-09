@@ -1,5 +1,7 @@
 extends Node2D
 
+signal item_released(item)
+
 var item_being_drag
 var screen_size
 
@@ -26,6 +28,8 @@ func _input(event: InputEvent) -> void:
 				item_being_drag = item
 			#Raycast check for item
 		else:
+			if item_being_drag:
+				item_released.emit(item_being_drag)
 			item_being_drag = null
 
 func raycast_check_item():
@@ -35,7 +39,7 @@ func raycast_check_item():
 	parameters.collide_with_areas = true
 	parameters.collision_mask = 1
 	var result = space_state.intersect_point(parameters)
-	print(result[0].collider.get_parent())
 	if result.size() > 0:
+		print(result[0].collider.get_parent())
 		return result[0].collider.get_parent()
 	return null

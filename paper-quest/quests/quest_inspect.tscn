@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://caflij2t4ghfg" path="res://Assets/Picture/Table BG/Table.png" id="2_utk6s"]
 [ext_resource type="Texture2D" uid="uid://burheb4vxa5m1" path="res://Assets/Picture/Table BG/Placemat.png" id="3_mor5c"]
 [ext_resource type="Texture2D" uid="uid://c2vkaavr0ljfo" path="res://Assets/Picture/Items/Big/Paper.png" id="4_2eteg"]
+[ext_resource type="Script" path="res://quests/paper_info.gd" id="5_paperinfo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_badge"]
 bg_color = Color(0.541, 0.157, 0.145, 1)
@@ -76,7 +77,8 @@ texture = ExtResource("3_mor5c")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Paper" type="TextureRect" parent="Center/Panel" unique_id=63595030]
+[node name="PaperInfo" type="Control" parent="Center/Panel" unique_id=63595030]
+script = ExtResource("5_paperinfo")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -87,29 +89,38 @@ offset_right = -282.0
 offset_bottom = -68.45093
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
+
+[node name="Paper" type="TextureRect" parent="Center/Panel/PaperInfo" unique_id=63595031]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("4_2eteg")
 stretch_mode = 6
 
-[node name="Content" type="MarginContainer" parent="Center/Panel" unique_id=986335782]
+[node name="Content" type="MarginContainer" parent="Center/Panel/PaperInfo" unique_id=986335782]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.14
-anchor_top = 0.13
-anchor_right = 0.56
-anchor_bottom = 0.76
+anchor_left = 0.0448
+anchor_top = 0.0546
+anchor_right = 0.9722
+anchor_bottom = 0.856
 mouse_filter = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="VBox" type="VBoxContainer" parent="Center/Panel/Content" unique_id=1635500887]
+[node name="VBox" type="VBoxContainer" parent="Center/Panel/PaperInfo/Content" unique_id=1635500887]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 8
 
-[node name="TitleLabel" type="Label" parent="Center/Panel/Content/VBox" unique_id=1589537091]
+[node name="TitleLabel" type="Label" parent="Center/Panel/PaperInfo/Content/VBox" unique_id=1589537091]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.302, 0.129, 0.055, 1)
 theme_override_colors/font_outline_color = Color(0.99, 0.93, 0.8, 0.6)
@@ -119,46 +130,46 @@ text = "ชื่อเควส"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="HSeparator1" type="HSeparator" parent="Center/Panel/Content/VBox" unique_id=288685348]
+[node name="HSeparator1" type="HSeparator" parent="Center/Panel/PaperInfo/Content/VBox" unique_id=288685348]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="DescLabel" type="Label" parent="Center/Panel/Content/VBox" unique_id=741617073]
+[node name="DescLabel" type="Label" parent="Center/Panel/PaperInfo/Content/VBox" unique_id=741617073]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.298, 0.22, 0.153, 1)
 theme_override_font_sizes/font_size = 14
 text = "รายละเอียดเควส"
 autowrap_mode = 3
 
-[node name="HSeparator2" type="HSeparator" parent="Center/Panel/Content/VBox" unique_id=996741300]
+[node name="HSeparator2" type="HSeparator" parent="Center/Panel/PaperInfo/Content/VBox" unique_id=996741300]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="TargetLabel" type="Label" parent="Center/Panel/Content/VBox" unique_id=1631546481]
+[node name="TargetLabel" type="Label" parent="Center/Panel/PaperInfo/Content/VBox" unique_id=1631546481]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.541, 0.157, 0.145, 1)
 theme_override_font_sizes/font_size = 16
 text = "เป้าหมาย: - x0"
 autowrap_mode = 2
 
-[node name="RewardLabel" type="Label" parent="Center/Panel/Content/VBox" unique_id=1499296996]
+[node name="RewardLabel" type="Label" parent="Center/Panel/PaperInfo/Content/VBox" unique_id=1499296996]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.541, 0.157, 0.145, 1)
 theme_override_font_sizes/font_size = 16
 text = "รางวัล: 0 Gold"
 
-[node name="RankRow" type="HBoxContainer" parent="Center/Panel/Content/VBox" unique_id=280676079]
+[node name="RankRow" type="HBoxContainer" parent="Center/Panel/PaperInfo/Content/VBox" unique_id=280676079]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 10
 
-[node name="RankBadge" type="PanelContainer" parent="Center/Panel/Content/VBox/RankRow" unique_id=1485810314]
+[node name="RankBadge" type="PanelContainer" parent="Center/Panel/PaperInfo/Content/VBox/RankRow" unique_id=1485810314]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_badge")
 
-[node name="RankBadgeLabel" type="Label" parent="Center/Panel/Content/VBox/RankRow/RankBadge" unique_id=525346458]
+[node name="RankBadgeLabel" type="Label" parent="Center/Panel/PaperInfo/Content/VBox/RankRow/RankBadge" unique_id=525346458]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.99, 0.93, 0.8, 1)
 theme_override_font_sizes/font_size = 26
@@ -166,7 +177,7 @@ text = "F"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RankTextLabel" type="Label" parent="Center/Panel/Content/VBox/RankRow" unique_id=1405121451]
+[node name="RankTextLabel" type="Label" parent="Center/Panel/PaperInfo/Content/VBox/RankRow" unique_id=1405121451]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.541, 0.157, 0.145, 1)
 theme_override_font_sizes/font_size = 14
