@@ -10,9 +10,14 @@
 [ext_resource type="Script" uid="uid://lmf0xl47tc4m" path="res://stamp_manager.gd" id="8_4c57u"]
 [ext_resource type="Texture2D" uid="uid://b5fucwic6pcws" path="res://Assets/Picture/Items/Stamp/Stamp_A.png" id="8_kek77"]
 [ext_resource type="Texture2D" uid="uid://gqdaonujebi7" path="res://Assets/Picture/Items/Stamp/Stamp_D.png" id="9_4c57u"]
+[ext_resource type="Texture2D" uid="uid://cix314j0mgvh4" path="res://Assets/Picture/Items/Stamp/Stamp_Holder.png" id="10_dg77c"]
+[ext_resource type="Texture2D" uid="uid://d10w1708avuxh" path="res://Assets/Picture/Items/Stamp/Stamp_G.png" id="11_efxa6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uj6oh"]
 size = Vector2(106, 33)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uj6oh"]
+radius = 45.276924
 
 [node name="Main" type="Node2D" unique_id=1758480046]
 
@@ -85,6 +90,36 @@ position = Vector2(150, 500)
 [node name="StampManager" type="Node2D" parent="ObjMananger" unique_id=821298446]
 script = ExtResource("8_4c57u")
 
+[node name="StampBases" type="Node2D" parent="ObjMananger/StampManager" unique_id=190337953]
+
+[node name="StampDBase" type="Node2D" parent="ObjMananger/StampManager/StampBases" unique_id=271302100]
+position = Vector2(319, 572)
+
+[node name="Sprite2D" type="Sprite2D" parent="ObjMananger/StampManager/StampBases/StampDBase" unique_id=56294941]
+z_index = -1
+texture = ExtResource("10_dg77c")
+region_enabled = true
+region_rect = Rect2(131, 34, 110, 36)
+
+[node name="StampABase" type="Node2D" parent="ObjMananger/StampManager/StampBases" unique_id=80963789]
+position = Vector2(314, 508)
+
+[node name="Sprite2D" type="Sprite2D" parent="ObjMananger/StampManager/StampBases/StampABase" unique_id=755435277]
+z_index = -1
+position = Vector2(0, -2)
+texture = ExtResource("10_dg77c")
+region_enabled = true
+region_rect = Rect2(16, 34, 110, 36)
+
+[node name="StampGBase" type="Node2D" parent="ObjMananger/StampManager/StampBases" unique_id=856728373]
+position = Vector2(512, 527)
+
+[node name="Sprite2D" type="Sprite2D" parent="ObjMananger/StampManager/StampBases/StampGBase" unique_id=1813710897]
+z_index = -1
+texture = ExtResource("10_dg77c")
+region_enabled = true
+region_rect = Rect2(244, 2, 100, 99)
+
 [node name="StampD" type="Node2D" parent="ObjMananger/StampManager" unique_id=1634686490]
 position = Vector2(319, 572)
 
@@ -108,3 +143,16 @@ texture = ExtResource("8_kek77")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObjMananger/StampManager/StampA/Area2D" unique_id=60755954]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_uj6oh")
+
+[node name="StampG" type="Node2D" parent="ObjMananger/StampManager" unique_id=1613998974]
+position = Vector2(512, 527)
+
+[node name="Sprite2D" type="Sprite2D" parent="ObjMananger/StampManager/StampG" unique_id=1928768705]
+texture = ExtResource("11_efxa6")
+
+[node name="Area2D" type="Area2D" parent="ObjMananger/StampManager/StampG" unique_id=1957169915]
+position = Vector2(-70, -403)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjMananger/StampManager/StampG/Area2D" unique_id=1061844537]
+position = Vector2(70, 403)
+shape = SubResource("CircleShape2D_uj6oh")

@@ -41,6 +41,8 @@ var stamps: Array[Sprite2D] = []
 @onready var reward_label: Label = $InfoPanel/Content/VBox/RewardLabel
 @onready var rank_label: Label = $InfoPanel/Content/VBox/RankLabel
 
+@onready var stamp_hitbox: Area2D = $Appr_DeniedStampHitBox
+@onready var guild_stamp_hitbox: Area2D = $GuildStampHitBox
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
@@ -132,5 +134,10 @@ func _refresh_labels() -> void:
 
 #Stamp
 func add_stamp(stamp: Sprite2D) -> void:
+
 	stamps.append(stamp)
-	
+
+	if state == State.CLOSED:
+		stamp.visible = false
+	else:
+		stamp.visible = true

@@ -9,6 +9,9 @@ size = Vector2(178, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uj6oh"]
 size = Vector2(56, 29)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_uj6oh"]
+radius = 15.264338
+
 [node name="QuestPaperSmall" type="Node2D" unique_id=1659032309]
 script = ExtResource("2_paperscript")
 
@@ -21,16 +24,22 @@ texture = ExtResource("1_papersmall")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=491605689]
 shape = SubResource("RectangleShape2D_papersmall")
 
-[node name="StampHitBox" type="Area2D" parent="." unique_id=776073958]
+[node name="Appr_DeniedStampHitBox" type="Area2D" parent="." unique_id=776073958]
 position = Vector2(-58, 113)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StampHitBox" unique_id=1635660675]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Appr_DeniedStampHitBox" unique_id=1635660675]
 position = Vector2(-15, -0.5)
 shape = SubResource("RectangleShape2D_uj6oh")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StampHitBox" unique_id=1415126511]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Appr_DeniedStampHitBox" unique_id=1415126511]
 position = Vector2(-1, 34)
 shape = SubResource("RectangleShape2D_uj6oh")
+
+[node name="GuildStampHitBox" type="Area2D" parent="." unique_id=2129884599]
+position = Vector2(75, 131)
+
+[node name="GuildStampCollision" type="CollisionShape2D" parent="GuildStampHitBox" unique_id=218933549]
+shape = SubResource("CircleShape2D_uj6oh")
 
 [node name="InfoPanel" type="Control" parent="." unique_id=863955328]
 visible = false
