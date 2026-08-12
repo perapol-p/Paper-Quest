@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://caflij2t4ghfg" path="res://Assets/Picture/Table BG/Table.png" id="2_utk6s"]
 [ext_resource type="Texture2D" uid="uid://burheb4vxa5m1" path="res://Assets/Picture/Table BG/Placemat.png" id="3_mor5c"]
 [ext_resource type="Texture2D" uid="uid://c2vkaavr0ljfo" path="res://Assets/Picture/Items/Big/Paper.png" id="4_2eteg"]
-[ext_resource type="Script" path="res://quests/paper_info.gd" id="5_paperinfo"]
+[ext_resource type="Script" uid="uid://di2tfpqsbi65n" path="res://quests/paper_info.gd" id="5_paperinfo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_badge"]
 bg_color = Color(0.541, 0.157, 0.145, 1)
@@ -78,7 +78,6 @@ expand_mode = 1
 stretch_mode = 6
 
 [node name="PaperInfo" type="Control" parent="Center/Panel" unique_id=63595030]
-script = ExtResource("5_paperinfo")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -89,7 +88,8 @@ offset_right = -282.0
 offset_bottom = -68.45093
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 0
+mouse_filter = 2
+script = ExtResource("5_paperinfo")
 
 [node name="Paper" type="TextureRect" parent="Center/Panel/PaperInfo" unique_id=63595031]
 layout_mode = 1
@@ -103,6 +103,7 @@ texture = ExtResource("4_2eteg")
 stretch_mode = 6
 
 [node name="Content" type="MarginContainer" parent="Center/Panel/PaperInfo" unique_id=986335782]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0448

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://24mdm6iyhrpd"]
+
+[ext_resource type="Texture2D" uid="uid://b5fucwic6pcws" path="res://Assets/Picture/Items/Stamp/Stamp_A.png" id="1_nk6vt"]
+
+[node name="stamp" type="Node2D" unique_id=757836547]
+
+[node name="StampA" type="Sprite2D" parent="." unique_id=1949971732]
+position = Vector2(182, 114.5)
+scale = Vector2(1.0555556, 0.7352943)
+texture = ExtResource("1_nk6vt")

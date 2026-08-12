@@ -11,6 +11,7 @@ class_name QuestInspect
 
 var quest_data: QuestData
 
+
 @onready var title_label: Label = $Center/Panel/PaperInfo/Content/VBox/TitleLabel
 @onready var desc_label: Label = $Center/Panel/PaperInfo/Content/VBox/DescLabel
 @onready var target_label: Label = $Center/Panel/PaperInfo/Content/VBox/TargetLabel
@@ -19,6 +20,7 @@ var quest_data: QuestData
 @onready var rank_text_label: Label = $Center/Panel/PaperInfo/Content/VBox/RankRow/RankTextLabel
 @onready var close_button: Button = $Center/Panel/CloseButton
 @onready var dim: ColorRect = $Dim
+
 
 
 func _ready() -> void:
@@ -30,7 +32,7 @@ func _ready() -> void:
 	if quest_data == null:
 		quest_data = QuestDatabase.generate_random_quest()
 	_refresh()
-
+	
 
 ## เรียกก่อน add_child ลง scene tree เพื่อบอกว่าใบเควสที่คลิกมามีข้อมูลอะไร
 ## จะได้แสดงข้อมูล "ใบเดียวกัน" กับที่วางอยู่บนโต๊ะ ไม่ใช่สุ่มใหม่

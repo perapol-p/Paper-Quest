@@ -29,6 +29,8 @@ var home_position: Vector2
 var small_shape := RectangleShape2D.new()
 var expanded_shape := RectangleShape2D.new()
 
+var stamps: Array[Sprite2D] = []
+
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var area: Area2D = $Area2D
 @onready var collision_shape: CollisionShape2D = $Area2D/CollisionShape2D
@@ -43,6 +45,7 @@ var expanded_shape := RectangleShape2D.new()
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
 	home_position = position
+
 
 	if quest_data == null:
 		quest_data = QuestDatabase.generate_random_quest()
@@ -96,6 +99,9 @@ func _apply_closed_visual() -> void:
 	collision_shape.shape = small_shape
 	info_panel.visible = false
 
+	for stamp in stamps:
+		stamp.visible = false
+
 
 func _apply_expanded_visual() -> void:
 	sprite.texture = PaperBigTexture
@@ -103,10 +109,15 @@ func _apply_expanded_visual() -> void:
 	collision_shape.shape = expanded_shape
 	info_panel.visible = true
 
+	for stamp in stamps:
+		stamp.visible = true
+
 	var half_size: Vector2 = PaperBigTexture.get_size() * expanded_scale * 0.5
 	var margin: float = expanded_content_margin
+
 	info_panel.position = -half_size + Vector2(margin, margin)
 	info_panel.size = half_size * 2.0 - Vector2(margin, margin) * 2.0
+
 
 
 func _refresh_labels() -> void:
@@ -117,3 +128,9 @@ func _refresh_labels() -> void:
 	target_label.text = "เป้าหมาย: %s   x%d" % [quest_data.target_name, quest_data.target_count]
 	reward_label.text = "รางวัล: %d Gold" % quest_data.reward_gold
 	rank_label.text = "Rank %s | %s | %s" % [quest_data.quest_rank, quest_data.category_text, quest_data.rank_text]
+
+
+#Stamp
+func add_stamp(stamp: Sprite2D) -> void:
+	stamps.append(stamp)
+	

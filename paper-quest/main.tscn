@@ -4,14 +4,19 @@
 [ext_resource type="PackedScene" uid="uid://d4moy76nup1f7" path="res://obj.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://c6b1q7v8x2m3n" path="res://quests/quest_board.tscn" id="3_qboard"]
 [ext_resource type="Texture2D" uid="uid://daqlybl4dgqdi" path="res://Assets/Picture/Guild BG/Wall.png" id="4_wallbg"]
-[ext_resource type="PackedScene" path="res://quests/quest_paper_small.tscn" id="5_papersmall"]
+[ext_resource type="PackedScene" uid="uid://c8f2n5uawql4h" path="res://quests/quest_paper_small.tscn" id="5_papersmall"]
 [ext_resource type="Texture2D" uid="uid://caflij2t4ghfg" path="res://Assets/Picture/Table BG/Table.png" id="6_tablebg"]
 [ext_resource type="Texture2D" uid="uid://burheb4vxa5m1" path="res://Assets/Picture/Table BG/Placemat.png" id="7_placemat"]
+[ext_resource type="Script" uid="uid://lmf0xl47tc4m" path="res://stamp_manager.gd" id="8_4c57u"]
+[ext_resource type="Texture2D" uid="uid://b5fucwic6pcws" path="res://Assets/Picture/Items/Stamp/Stamp_A.png" id="8_kek77"]
+[ext_resource type="Texture2D" uid="uid://gqdaonujebi7" path="res://Assets/Picture/Items/Stamp/Stamp_D.png" id="9_4c57u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uj6oh"]
+size = Vector2(106, 33)
 
 [node name="Main" type="Node2D" unique_id=1758480046]
 
-[node name="Background" type="TextureRect" parent="."]
-layout_mode = 1
+[node name="Background" type="TextureRect" parent="." unique_id=1533063679]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -21,18 +26,19 @@ mouse_filter = 2
 texture = ExtResource("4_wallbg")
 expand_mode = 1
 stretch_mode = 6
+metadata/_edit_use_anchors_ = true
 
-[node name="TableArea" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
+[node name="TableArea" type="Control" parent="." unique_id=931389738]
+layout_mode = 3
 anchor_left = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="TableBG" type="TextureRect" parent="TableArea"]
+[node name="TableBG" type="TextureRect" parent="TableArea" unique_id=437711169]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -43,8 +49,9 @@ mouse_filter = 2
 texture = ExtResource("6_tablebg")
 expand_mode = 1
 stretch_mode = 5
+metadata/_edit_use_anchors_ = true
 
-[node name="Placemat" type="TextureRect" parent="TableArea"]
+[node name="Placemat" type="TextureRect" parent="TableArea" unique_id=1132421251]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -55,6 +62,7 @@ mouse_filter = 2
 texture = ExtResource("7_placemat")
 expand_mode = 1
 stretch_mode = 5
+metadata/_edit_use_anchors_ = true
 
 [node name="QuestBoard" parent="." unique_id=443051214 instance=ExtResource("3_qboard")]
 visible = false
@@ -71,5 +79,32 @@ position = Vector2(150, 372)
 [node name="Obj3" parent="ObjMananger" unique_id=1260791783 instance=ExtResource("2_h2yge")]
 position = Vector2(136, 253)
 
-[node name="QuestPaperSmall" parent="ObjMananger" instance=ExtResource("5_papersmall")]
+[node name="QuestPaperSmall" parent="ObjMananger" unique_id=562175 instance=ExtResource("5_papersmall")]
 position = Vector2(150, 500)
+
+[node name="StampManager" type="Node2D" parent="ObjMananger" unique_id=821298446]
+script = ExtResource("8_4c57u")
+
+[node name="StampD" type="Node2D" parent="ObjMananger/StampManager" unique_id=1634686490]
+position = Vector2(319, 572)
+
+[node name="Sprite2D" type="Sprite2D" parent="ObjMananger/StampManager/StampD" unique_id=579423958]
+texture = ExtResource("9_4c57u")
+
+[node name="Area2D" type="Area2D" parent="ObjMananger/StampManager/StampD" unique_id=110718149]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjMananger/StampManager/StampD/Area2D" unique_id=361818922]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_uj6oh")
+
+[node name="StampA" type="Node2D" parent="ObjMananger/StampManager" unique_id=966396235]
+position = Vector2(316, 507)
+
+[node name="Sprite2D" type="Sprite2D" parent="ObjMananger/StampManager/StampA" unique_id=1452018324]
+texture = ExtResource("8_kek77")
+
+[node name="Area2D" type="Area2D" parent="ObjMananger/StampManager/StampA" unique_id=936663510]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjMananger/StampManager/StampA/Area2D" unique_id=60755954]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_uj6oh")

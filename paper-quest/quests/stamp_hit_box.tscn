@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cbi6pyg7vk88a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mibj"]
+size = Vector2(98, 29)
+
+[node name="StampHitBox" type="Area2D" unique_id=950736928]
+position = Vector2(35, -2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2042907200]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_5mibj")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1154978082]
+position = Vector2(0, 38)
+shape = SubResource("RectangleShape2D_5mibj")
