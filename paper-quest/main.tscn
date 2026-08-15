@@ -111,15 +111,6 @@ texture = ExtResource("10_dg77c")
 region_enabled = true
 region_rect = Rect2(16, 34, 110, 36)
 
-[node name="StampGBase" type="Node2D" parent="ObjMananger/StampManager/StampBases" unique_id=856728373]
-position = Vector2(512, 527)
-
-[node name="Sprite2D" type="Sprite2D" parent="ObjMananger/StampManager/StampBases/StampGBase" unique_id=1813710897]
-z_index = -1
-texture = ExtResource("10_dg77c")
-region_enabled = true
-region_rect = Rect2(244, 2, 100, 99)
-
 [node name="StampD" type="Node2D" parent="ObjMananger/StampManager" unique_id=1634686490]
 position = Vector2(319, 572)
 
@@ -143,16 +134,3 @@ texture = ExtResource("8_kek77")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObjMananger/StampManager/StampA/Area2D" unique_id=60755954]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_uj6oh")
-
-[node name="StampG" type="Node2D" parent="ObjMananger/StampManager" unique_id=1613998974]
-position = Vector2(512, 527)
-
-[node name="Sprite2D" type="Sprite2D" parent="ObjMananger/StampManager/StampG" unique_id=1928768705]
-texture = ExtResource("11_efxa6")
-
-[node name="Area2D" type="Area2D" parent="ObjMananger/StampManager/StampG" unique_id=1957169915]
-position = Vector2(-70, -403)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjMananger/StampManager/StampG/Area2D" unique_id=1061844537]
-position = Vector2(70, 403)
-shape = SubResource("CircleShape2D_uj6oh")

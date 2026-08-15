@@ -31,6 +31,9 @@ var expanded_shape := RectangleShape2D.new()
 
 var stamps: Array[Sprite2D] = []
 
+## ตราปั้ม Approve/Denied ที่ปั้มไว้ล่าสุด (มีได้แค่อันเดียวบนกระดาษ)
+var current_result_stamp: Sprite2D = null
+
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var area: Area2D = $Area2D
 @onready var collision_shape: CollisionShape2D = $Area2D/CollisionShape2D
@@ -43,6 +46,9 @@ var stamps: Array[Sprite2D] = []
 
 @onready var stamp_hitbox: Area2D = $Appr_DeniedStampHitBox
 @onready var guild_stamp_hitbox: Area2D = $GuildStampHitBox
+
+## ตรากิลด์ที่แปะติดอยู่บนกระดาษเควสอยู่แล้วตั้งแต่แรก ไม่ต้องปั้มเอง
+@onready var guild_stamp_visual: Sprite2D = $GuildStampHitBox/GuildStampVisual
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
@@ -101,6 +107,8 @@ func _apply_closed_visual() -> void:
 	collision_shape.shape = small_shape
 	info_panel.visible = false
 
+	guild_stamp_visual.visible = false
+
 	for stamp in stamps:
 		stamp.visible = false
 
@@ -110,6 +118,8 @@ func _apply_expanded_visual() -> void:
 	sprite.scale = expanded_scale
 	collision_shape.shape = expanded_shape
 	info_panel.visible = true
+
+	guild_stamp_visual.visible = true
 
 	for stamp in stamps:
 		stamp.visible = true
@@ -134,6 +144,17 @@ func _refresh_labels() -> void:
 
 #Stamp
 func add_stamp(stamp: Sprite2D) -> void:
+
+	# =====================================================
+	# ปั้มได้แค่อันเดียว ถ้ามีตราเก่าอยู่ ให้ลบทิ้งก่อน
+	# แล้วค่อยแปะตราใหม่แทนที่
+	# =====================================================
+
+	if current_result_stamp != null and is_instance_valid(current_result_stamp):
+		stamps.erase(current_result_stamp)
+		current_result_stamp.queue_free()
+
+	current_result_stamp = stamp
 
 	stamps.append(stamp)
 

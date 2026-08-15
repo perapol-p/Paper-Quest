@@ -7,7 +7,6 @@ extends Node2D
 
 @onready var stamp_a: Node2D = $StampA
 @onready var stamp_d: Node2D = $StampD
-@onready var stamp_guild: Node2D = $StampG
 
 
 # =========================================================
@@ -16,7 +15,6 @@ extends Node2D
 
 @onready var stamp_a_area: Area2D = $StampA/Area2D
 @onready var stamp_d_area: Area2D = $StampD/Area2D
-@onready var stamp_guild_area: Area2D = $StampG/Area2D
 
 
 # =========================================================
@@ -25,7 +23,6 @@ extends Node2D
 
 @onready var stamp_a_base: Node2D = $StampBases/StampABase
 @onready var stamp_d_base: Node2D = $StampBases/StampDBase
-@onready var stamp_guild_base: Node2D = $StampBases/StampGBase
 
 
 # =========================================================
@@ -33,8 +30,6 @@ extends Node2D
 # =========================================================
 
 @onready var stamp_hitbox: Area2D = $"../QuestPaperSmall/Appr_DeniedStampHitBox"
-
-@onready var guild_stamp_hitbox: Area2D = $"../QuestPaperSmall/GuildStampHitBox"
 
 
 # =========================================================
@@ -58,7 +53,6 @@ func _ready() -> void:
 	# รับ Event จาก Stamp
 	stamp_a_area.input_event.connect(_on_stamp_a_input)
 	stamp_d_area.input_event.connect(_on_stamp_d_input)
-	stamp_guild_area.input_event.connect(_on_stamp_guild_input)
 
 	print("Stamp Manager Ready")
 
@@ -160,54 +154,6 @@ func _on_stamp_d_input(
 
 
 # =========================================================
-# Stamp Guild Input
-# =========================================================
-#
-# คลิกซ้าย  = ลาก
-# คลิกขวา   = ปั้ม
-# =========================================================
-
-func _on_stamp_guild_input(
-	_viewport: Node,
-	event: InputEvent,
-	_shape_idx: int
-) -> void:
-
-	if not event is InputEventMouseButton:
-		return
-
-
-	# =====================================================
-	# คลิกซ้าย = เริ่มลาก
-	# =====================================================
-
-	if event.button_index == MOUSE_BUTTON_LEFT:
-
-		if event.pressed:
-
-			selected_stamp = stamp_guild
-
-			dragging = true
-
-			mouse_was_pressed = true
-
-			print("เริ่มลาก Guild")
-
-
-	# =====================================================
-	# คลิกขวา = ปั้ม
-	# =====================================================
-
-	elif event.button_index == MOUSE_BUTTON_RIGHT:
-
-		if event.pressed:
-
-			print("คลิกขวา Guild")
-
-			stamp_guild_pressed()
-
-
-# =========================================================
 # Process
 # =========================================================
 
@@ -273,13 +219,6 @@ func _process(_delta: float) -> void:
 				return_stamp_to_base(
 					stamp_d,
 					stamp_d_base
-				)
-
-			elif released_stamp == stamp_guild:
-
-				return_stamp_to_base(
-					stamp_guild,
-					stamp_guild_base
 				)
 
 
@@ -348,25 +287,6 @@ func stamp_d_pressed() -> void:
 
 
 # =========================================================
-# กดขวา Guild
-# =========================================================
-
-func stamp_guild_pressed() -> void:
-
-	# ตรวจว่า Stamp อยู่ตรง Guild HitBox หรือไม่
-
-	if stamp_guild_area.overlaps_area(guild_stamp_hitbox):
-
-		print("Guild ถูกตำแหน่ง")
-
-		spawn_guild_stamp()
-
-	else:
-
-		print("Guild ไม่ได้อยู่ตรง HitBox")
-
-
-# =========================================================
 # Spawn APPROVE
 # =========================================================
 
@@ -426,37 +346,6 @@ func spawn_denied_stamp() -> void:
 
 
 	print("Spawn Denied Stamp")
-
-
-# =========================================================
-# Spawn GUILD
-# =========================================================
-
-func spawn_guild_stamp() -> void:
-
-	var stamp := Sprite2D.new()
-
-
-	stamp.texture = preload(
-		"res://Assets/Picture/Items/Stamp/Guild.png"
-	)
-
-
-	var paper := $"../QuestPaperSmall"
-
-
-	paper.add_child(stamp)
-
-
-	# ตำแหน่งที่ปั้ม
-	stamp.global_position = stamp_guild.global_position
-
-
-	# ส่งให้ Paper จัดการ Stamp
-	paper.add_stamp(stamp)
-
-
-	print("Spawn Guild Stamp")
 
 
 # =========================================================
