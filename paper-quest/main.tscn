@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://gqdaonujebi7" path="res://Assets/Picture/Items/Stamp/Stamp_D.png" id="9_4c57u"]
 [ext_resource type="Texture2D" uid="uid://cix314j0mgvh4" path="res://Assets/Picture/Items/Stamp/Stamp_Holder.png" id="10_dg77c"]
 [ext_resource type="Texture2D" uid="uid://d10w1708avuxh" path="res://Assets/Picture/Items/Stamp/Stamp_G.png" id="11_efxa6"]
+[ext_resource type="Script" path="res://submit_ui.gd" id="12_submitui"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uj6oh"]
 size = Vector2(106, 33)
@@ -134,3 +135,38 @@ texture = ExtResource("8_kek77")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObjMananger/StampManager/StampA/Area2D" unique_id=60755954]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_uj6oh")
+
+[node name="SubmitUI" type="CanvasLayer" parent="."]
+script = ExtResource("12_submitui")
+quest_paper_path = NodePath("../ObjMananger/QuestPaperSmall")
+
+[node name="SubmitButton" type="Button" parent="SubmitUI"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -60.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "ส่งเควส"
+
+[node name="ResultLabel" type="Label" parent="SubmitUI"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -320.0
+offset_top = -104.0
+offset_right = -20.0
+offset_bottom = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.541, 0.157, 0.145, 1)
+theme_override_font_sizes/font_size = 26
+horizontal_alignment = 2
+text = ""

@@ -128,6 +128,10 @@ var rank_type_pool: Dictionary = {
 
 var rank_pool: Array[String] = ["1 คน", "2 คน+", "3 คน+"]
 
+## โอกาสที่ตรากิลด์บนใบเควสจะเป็นของจริง (0.0 - 1.0)
+## 0.7 = จริง 70% / ปลอม 30%
+const GUILD_AUTHENTIC_CHANCE: float = 0.7
+
 
 func _ready() -> void:
 	rng.randomize()
@@ -150,6 +154,9 @@ func generate_random_quest(forced_rank: String = "") -> QuestData:
 	quest.reward_gold = rng.randi_range(range_arr[0], range_arr[1])
 	# ปัดรางวัลให้ลงตัวเป็นเลข 5 (ดูเป็นตัวเลขทองแบบในเกม)
 	quest.reward_gold = int(round(quest.reward_gold / 5.0)) * 5
+
+	# สุ่มว่าตรากิลด์บนใบเควสนี้เป็นของจริงหรือปลอม
+	quest.is_guild_authentic = rng.randf() < GUILD_AUTHENTIC_CHANCE
 
 	return quest
 

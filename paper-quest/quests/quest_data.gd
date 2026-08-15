@@ -24,3 +24,7 @@ class_name QuestData
 
 ## สถานะเควส: "available", "taken", "completed"
 @export var state: String = "available"
+
+## ตรากิลด์บนใบเควสนี้เป็นของจริงหรือไม่ (false = ตราปลอม)
+## ผู้เล่นต้องสังเกตแล้วตัดสินใจกด Approve (จริง) หรือ Denied (ปลอม)
+@export var is_guild_authentic: bool = true

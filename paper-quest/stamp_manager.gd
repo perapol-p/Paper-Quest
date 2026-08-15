@@ -310,8 +310,8 @@ func spawn_approve_stamp() -> void:
 	stamp.global_position = stamp_a.global_position
 
 
-	# ส่งให้ Paper จัดการ Stamp
-	paper.add_stamp(stamp)
+	# ส่งให้ Paper จัดการ Stamp (verdict = approve เพื่อตรวจว่าตรากิลด์จริงหรือปลอม)
+	paper.add_stamp(stamp, "approve")
 
 
 	print("Spawn Approve Stamp")
@@ -341,8 +341,8 @@ func spawn_denied_stamp() -> void:
 	stamp.global_position = stamp_d.global_position
 
 
-	# ส่งให้ Paper จัดการ Stamp
-	paper.add_stamp(stamp)
+	# ส่งให้ Paper จัดการ Stamp (verdict = denied เพื่อตรวจว่าตรากิลด์จริงหรือปลอม)
+	paper.add_stamp(stamp, "denied")
 
 
 	print("Spawn Denied Stamp")
