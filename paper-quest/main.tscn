@@ -11,14 +11,13 @@
 [ext_resource type="Texture2D" uid="uid://b5fucwic6pcws" path="res://Assets/Picture/Items/Stamp/Stamp_A.png" id="8_kek77"]
 [ext_resource type="Texture2D" uid="uid://gqdaonujebi7" path="res://Assets/Picture/Items/Stamp/Stamp_D.png" id="9_4c57u"]
 [ext_resource type="Texture2D" uid="uid://cix314j0mgvh4" path="res://Assets/Picture/Items/Stamp/Stamp_Holder.png" id="10_dg77c"]
-[ext_resource type="Texture2D" uid="uid://d10w1708avuxh" path="res://Assets/Picture/Items/Stamp/Stamp_G.png" id="11_efxa6"]
-[ext_resource type="Script" path="res://submit_ui.gd" id="12_submitui"]
+[ext_resource type="Script" uid="uid://eqpxh2civlpk" path="res://submit_ui.gd" id="12_submitui"]
+[ext_resource type="PackedScene" uid="uid://ujpycj5ujd3l" path="res://i_dcard.tscn" id="12_vivmo"]
+[ext_resource type="Script" uid="uid://cmvvnpipit3us" path="res://npc_manager.gd" id="13_ycdy4"]
+[ext_resource type="PackedScene" uid="uid://btaif0qcgopsa" path="res://NPC.tscn" id="14_w48qg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uj6oh"]
 size = Vector2(106, 33)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_uj6oh"]
-radius = 45.276924
 
 [node name="Main" type="Node2D" unique_id=1758480046]
 
@@ -136,11 +135,14 @@ texture = ExtResource("8_kek77")
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_uj6oh")
 
-[node name="SubmitUI" type="CanvasLayer" parent="."]
+[node name="IDcard" parent="ObjMananger" unique_id=2000753673 instance=ExtResource("12_vivmo")]
+position = Vector2(610, 189)
+
+[node name="SubmitUI" type="CanvasLayer" parent="." unique_id=1445651725]
 script = ExtResource("12_submitui")
 quest_paper_path = NodePath("../ObjMananger/QuestPaperSmall")
 
-[node name="SubmitButton" type="Button" parent="SubmitUI"]
+[node name="SubmitButton" type="Button" parent="SubmitUI" unique_id=429675122]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -154,7 +156,7 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "ส่งเควส"
 
-[node name="ResultLabel" type="Label" parent="SubmitUI"]
+[node name="ResultLabel" type="Label" parent="SubmitUI" unique_id=1290756748]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -169,4 +171,20 @@ grow_vertical = 0
 theme_override_colors/font_color = Color(0.541, 0.157, 0.145, 1)
 theme_override_font_sizes/font_size = 26
 horizontal_alignment = 2
-text = ""
+
+[node name="NPCManager" type="Node2D" parent="." unique_id=1705403971]
+position = Vector2(526, 303)
+script = ExtResource("13_ycdy4")
+npc_scene = ExtResource("14_w48qg")
+
+[node name="NPCSpawnPoint" type="Marker2D" parent="NPCManager" unique_id=816844673]
+position = Vector2(-260, -209)
+
+[node name="NPCContainer" type="Node2D" parent="NPCManager" unique_id=385969058]
+position = Vector2(-694, -148)
+
+[node name="NPCDeskPoint" type="Marker2D" parent="NPCManager" unique_id=1717823640]
+position = Vector2(-252, -81)
+
+[node name="NPCExitPoint" type="Marker2D" parent="NPCManager" unique_id=1994743688]
+position = Vector2(-262, -237)

@@ -51,5 +51,11 @@ func _on_submit_pressed() -> void:
 	await get_tree().create_timer(3.0).timeout
 
 	quest_paper.reset_to_closed_with_new_quest()
+	
+	#NPC spawn หลังส่งเควสเสร็จ
+	var npc_manager = get_tree().current_scene.get_node("NPCManager")
+	npc_manager.finish_current_npc()
+	#
+	
 	result_label.text = ""
 	submit_button.disabled = false
