@@ -23,49 +23,38 @@ size = Vector2(106, 33)
 
 [node name="Main" type="Node2D" unique_id=1758480046]
 
-[node name="Background" type="TextureRect" parent="." unique_id=1533063679]
-mouse_filter = 2
-texture = ExtResource("1_yaehf")
-expand_mode = 1
-stretch_mode = 6
-metadata/_edit_use_anchors_ = true
+[node name="BackGround" type="Node" parent="." unique_id=1024958697]
 
-[node name="SunnyBg" type="Sprite2D" parent="Background" unique_id=1427922574]
+[node name="GuildArea" type="Node" parent="BackGround" unique_id=1800871110]
+
+[node name="SunnyBg" type="Sprite2D" parent="BackGround/GuildArea" unique_id=1427922574]
 position = Vector2(180.00002, 324)
 scale = Vector2(1.8, 1.8)
 texture = ExtResource("2_074og")
 
-[node name="Town" type="Sprite2D" parent="Background" unique_id=834959835]
+[node name="Town" type="Sprite2D" parent="BackGround/GuildArea" unique_id=834959835]
 position = Vector2(180.00002, 324)
 scale = Vector2(1.8, 1.8)
 texture = ExtResource("1_yaehf")
 
-[node name="Wall" type="Sprite2D" parent="Background" unique_id=919234962]
+[node name="Wall" type="Sprite2D" parent="BackGround/GuildArea" unique_id=919234962]
 position = Vector2(180.00002, 324)
 scale = Vector2(1.8, 1.8)
 texture = ExtResource("3_cegan")
 
-[node name="PlacematSmall" type="Sprite2D" parent="Background" unique_id=772862501]
+[node name="PlacematSmall" type="Sprite2D" parent="BackGround/GuildArea" unique_id=772862501]
 position = Vector2(180.00002, 591.00006)
 scale = Vector2(1.8, 1.8)
 texture = ExtResource("4_82xsv")
 
-[node name="TableArea" type="Control" parent="." unique_id=931389738]
-layout_mode = 3
-anchor_left = 0.5
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-metadata/_edit_use_anchors_ = true
+[node name="TableArea" type="Node" parent="BackGround" unique_id=1608780955]
 
-[node name="Table" type="Sprite2D" parent="TableArea" unique_id=751655200]
+[node name="Table" type="Sprite2D" parent="BackGround/TableArea" unique_id=751655200]
 position = Vector2(756.00006, 324)
 scale = Vector2(1.8, 1.8)
 texture = ExtResource("5_getpj")
 
-[node name="Placemat" type="Sprite2D" parent="TableArea" unique_id=874408175]
+[node name="Placemat" type="Sprite2D" parent="BackGround/TableArea" unique_id=874408175]
 position = Vector2(756, 324)
 scale = Vector2(1.8, 1.8)
 texture = ExtResource("6_ryguw")
