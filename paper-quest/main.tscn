@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://cvhx7lur1yttj"]
 
 [ext_resource type="Script" uid="uid://bquxm25optta7" path="res://obj_mananger.gd" id="1_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://d4moy76nup1f7" path="res://obj.tscn" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://b5hoj11ohrsra" path="res://Assets/Export/BG/Guild BG/Town.png" id="1_yaehf"]
+[ext_resource type="Texture2D" uid="uid://cxonnutko7jtf" path="res://Assets/Export/BG/Guild BG/SunnyBG.png" id="2_074og"]
+[ext_resource type="Texture2D" uid="uid://cmngwopluj1h6" path="res://Assets/Export/BG/Guild BG/Wall.png" id="3_cegan"]
 [ext_resource type="PackedScene" uid="uid://c6b1q7v8x2m3n" path="res://quests/quest_board.tscn" id="3_qboard"]
-[ext_resource type="Texture2D" uid="uid://daqlybl4dgqdi" path="res://Assets/Picture/Guild BG/Wall.png" id="4_wallbg"]
+[ext_resource type="Texture2D" uid="uid://dpjy5qtacg5wr" path="res://Assets/Export/BG/Guild BG/Placemat_Small.png" id="4_82xsv"]
+[ext_resource type="Texture2D" uid="uid://b6uittb27wyib" path="res://Assets/Export/BG/Table BG/Table.png" id="5_getpj"]
 [ext_resource type="PackedScene" uid="uid://c8f2n5uawql4h" path="res://quests/quest_paper_small.tscn" id="5_papersmall"]
-[ext_resource type="Texture2D" uid="uid://caflij2t4ghfg" path="res://Assets/Picture/Table BG/Table.png" id="6_tablebg"]
-[ext_resource type="Texture2D" uid="uid://burheb4vxa5m1" path="res://Assets/Picture/Table BG/Placemat.png" id="7_placemat"]
+[ext_resource type="Texture2D" uid="uid://dwafyuol0fvco" path="res://Assets/Export/BG/Table BG/Placemat.png" id="6_ryguw"]
 [ext_resource type="Script" uid="uid://lmf0xl47tc4m" path="res://stamp_manager.gd" id="8_4c57u"]
 [ext_resource type="Texture2D" uid="uid://b5fucwic6pcws" path="res://Assets/Picture/Items/Stamp/Stamp_A.png" id="8_kek77"]
 [ext_resource type="Texture2D" uid="uid://gqdaonujebi7" path="res://Assets/Picture/Items/Stamp/Stamp_D.png" id="9_4c57u"]
@@ -21,68 +23,47 @@ size = Vector2(106, 33)
 
 [node name="Main" type="Node2D" unique_id=1758480046]
 
-[node name="Background" type="TextureRect" parent="." unique_id=1533063679]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("4_wallbg")
-expand_mode = 1
-stretch_mode = 6
-metadata/_edit_use_anchors_ = true
+[node name="BackGround" type="Node2D" parent="." unique_id=1033314876]
 
-[node name="TableArea" type="Control" parent="." unique_id=931389738]
-layout_mode = 3
-anchor_left = 0.5
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-metadata/_edit_use_anchors_ = true
+[node name="GuildArea" type="Node2D" parent="BackGround" unique_id=880055905]
 
-[node name="TableBG" type="TextureRect" parent="TableArea" unique_id=437711169]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("6_tablebg")
-expand_mode = 1
-stretch_mode = 5
-metadata/_edit_use_anchors_ = true
+[node name="SunnyBg" type="Sprite2D" parent="BackGround/GuildArea" unique_id=1427922574]
+position = Vector2(180.00002, 324)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("2_074og")
 
-[node name="Placemat" type="TextureRect" parent="TableArea" unique_id=1132421251]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("7_placemat")
-expand_mode = 1
-stretch_mode = 5
-metadata/_edit_use_anchors_ = true
+[node name="Town" type="Sprite2D" parent="BackGround/GuildArea" unique_id=834959835]
+position = Vector2(180.00002, 324)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("1_yaehf")
+
+[node name="Wall" type="Sprite2D" parent="BackGround/GuildArea" unique_id=919234962]
+position = Vector2(180.00002, 324)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("3_cegan")
+
+[node name="PlacematSmall" type="Sprite2D" parent="BackGround/GuildArea" unique_id=772862501]
+position = Vector2(180.00002, 591.00006)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("4_82xsv")
+
+[node name="TableArea" type="Node2D" parent="BackGround" unique_id=1873085848]
+
+[node name="Table" type="Sprite2D" parent="BackGround/TableArea" unique_id=751655200]
+position = Vector2(756.00006, 324)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("5_getpj")
+
+[node name="Placemat" type="Sprite2D" parent="BackGround/TableArea" unique_id=874408175]
+position = Vector2(756, 324)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("6_ryguw")
 
 [node name="QuestBoard" parent="." unique_id=443051214 instance=ExtResource("3_qboard")]
 visible = false
 
 [node name="ObjMananger" type="Node2D" parent="." unique_id=1469347821]
 script = ExtResource("1_0xm2m")
-
-[node name="Obj" parent="ObjMananger" unique_id=1021258095 instance=ExtResource("2_h2yge")]
-position = Vector2(148, 139)
-
-[node name="Obj2" parent="ObjMananger" unique_id=1465355096 instance=ExtResource("2_h2yge")]
-position = Vector2(150, 372)
-
-[node name="Obj3" parent="ObjMananger" unique_id=1260791783 instance=ExtResource("2_h2yge")]
-position = Vector2(136, 253)
 
 [node name="QuestPaperSmall" parent="ObjMananger" unique_id=562175 instance=ExtResource("5_papersmall")]
 position = Vector2(150, 500)
