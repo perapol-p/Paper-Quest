@@ -14,19 +14,23 @@ extends Node2D
 # -------------------------
 
 var first_names = [
-	"Q","W","E","R","T","Y"
+	"Arthur","Alden","Asher","Bran","Caleb","Cedric","Dorian","Drake","Garret","Gideon","Hector","Jasper",
+	"Julian","Kaelen","Lance","Logan","Lucian","Orson","Robin","Roderick","Rowan","Silas","Tristan","Vance",
+	"Zephyr"
 ]
 
 var last_names = [
-	"A","S","D","F","G"
+	"Ashford","Belmont","Blackwood","Carter","Fletcher","Hawthorn","Ironwood","Kingsley","Mercer","Miller",
+	"Montgomery","Oakheart","Ravencrest","Redford","Silverford","Smith","Sterling","Stormriver","Tanner",
+	"Vance","Weaver","Windermere","Winterborne","Wright"
 ]
 
 var classes = [
-	"Warrior","Mage","Archer","Knight","67"
+	"Warrior","Mage","Ranger","Rogue","Priest"
 ]
 
 var ranks = [
-	"F","E","D","C","B","A","Sigma"
+	"F","E","D","C","B","A","S"
 ]
 
 var guilds = [
