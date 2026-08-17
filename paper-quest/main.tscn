@@ -159,13 +159,13 @@ script = ExtResource("13_ycdy4")
 npc_scene = ExtResource("14_w48qg")
 
 [node name="NPCSpawnPoint" type="Marker2D" parent="NPCManager" unique_id=816844673]
-position = Vector2(-260, -209)
+position = Vector2(-352, 12)
 
 [node name="NPCContainer" type="Node2D" parent="NPCManager" unique_id=385969058]
 position = Vector2(-694, -148)
 
 [node name="NPCDeskPoint" type="Marker2D" parent="NPCManager" unique_id=1717823640]
-position = Vector2(-252, -81)
+position = Vector2(-347, 141)
 
 [node name="NPCExitPoint" type="Marker2D" parent="NPCManager" unique_id=1994743688]
-position = Vector2(-262, -237)
+position = Vector2(-353, -34)
