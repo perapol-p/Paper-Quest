@@ -3,22 +3,24 @@
 [ext_resource type="Script" uid="uid://8hchwtros1f1" path="res://i_dcard.gd" id="1_n7ws4"]
 [ext_resource type="Texture2D" uid="uid://ckcgeks7iyddh" path="res://Assets/Picture/Items/Big/ID_Card.png" id="2_8eabr"]
 [ext_resource type="FontFile" uid="uid://cco3a1jfv4tn7" path="res://Assets/Fonts/EN_Pixel_Font.ttf" id="3_8eabr"]
+[ext_resource type="Texture2D" uid="uid://cuvx8n0jac1od" path="res://Assets/Export/Items/Small/ID_Card_Small.png" id="3_xra2y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0qol"]
-size = Vector2(100, 64)
+size = Vector2(33.5, 17.5)
 
 [node name="IDcard" type="Node2D" unique_id=2000753673]
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 script = ExtResource("1_n7ws4")
 
-[node name="IdCard" type="Sprite2D" parent="." unique_id=2029024959]
+[node name="IdCardBig" type="Sprite2D" parent="." unique_id=2029024959]
 texture = ExtResource("2_8eabr")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1844751112]
-visible = false
+[node name="IdCardSmall" type="Sprite2D" parent="." unique_id=1156959529]
+texture = ExtResource("3_xra2y")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=369735397]
-visible = false
+[node name="CardHitBox" type="Area2D" parent="." unique_id=1844751112]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CardHitBox" unique_id=369735397]
 shape = SubResource("RectangleShape2D_v0qol")
 
 [node name="CardUI" type="Control" parent="." unique_id=1035587552]

@@ -136,7 +136,7 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_uj6oh")
 
 [node name="IDcard" parent="ObjMananger" unique_id=2000753673 instance=ExtResource("12_vivmo")]
-position = Vector2(610, 189)
+position = Vector2(171, 215)
 
 [node name="SubmitUI" type="CanvasLayer" parent="." unique_id=1445651725]
 script = ExtResource("12_submitui")
