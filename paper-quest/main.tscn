@@ -23,9 +23,9 @@ size = Vector2(106, 33)
 
 [node name="Main" type="Node2D" unique_id=1758480046]
 
-[node name="BackGround" type="Node" parent="." unique_id=1024958697]
+[node name="BackGround" type="Node2D" parent="." unique_id=1033314876]
 
-[node name="GuildArea" type="Node" parent="BackGround" unique_id=1800871110]
+[node name="GuildArea" type="Node2D" parent="BackGround" unique_id=880055905]
 
 [node name="SunnyBg" type="Sprite2D" parent="BackGround/GuildArea" unique_id=1427922574]
 position = Vector2(180.00002, 324)
@@ -47,7 +47,7 @@ position = Vector2(180.00002, 591.00006)
 scale = Vector2(1.8, 1.8)
 texture = ExtResource("4_82xsv")
 
-[node name="TableArea" type="Node" parent="BackGround" unique_id=1608780955]
+[node name="TableArea" type="Node2D" parent="BackGround" unique_id=1873085848]
 
 [node name="Table" type="Sprite2D" parent="BackGround/TableArea" unique_id=751655200]
 position = Vector2(756.00006, 324)
