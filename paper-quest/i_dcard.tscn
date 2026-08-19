@@ -13,6 +13,7 @@ scale = Vector2(2, 2)
 script = ExtResource("1_n7ws4")
 
 [node name="IdCardBig" type="Sprite2D" parent="." unique_id=2029024959]
+visible = false
 texture = ExtResource("2_8eabr")
 
 [node name="IdCardSmall" type="Sprite2D" parent="." unique_id=1156959529]

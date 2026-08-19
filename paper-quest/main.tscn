@@ -43,6 +43,7 @@ scale = Vector2(1.8, 1.8)
 texture = ExtResource("3_cegan")
 
 [node name="PlacematSmall" type="Sprite2D" parent="BackGround/GuildArea" unique_id=772862501]
+z_index = 1
 position = Vector2(180.00002, 591.00006)
 scale = Vector2(1.8, 1.8)
 texture = ExtResource("4_82xsv")
@@ -66,7 +67,8 @@ visible = false
 script = ExtResource("1_0xm2m")
 
 [node name="QuestPaperSmall" parent="ObjMananger" unique_id=562175 instance=ExtResource("5_papersmall")]
-position = Vector2(150, 500)
+z_index = 2
+position = Vector2(184, 590)
 
 [node name="StampManager" type="Node2D" parent="ObjMananger" unique_id=821298446]
 script = ExtResource("8_4c57u")
@@ -74,7 +76,7 @@ script = ExtResource("8_4c57u")
 [node name="StampBases" type="Node2D" parent="ObjMananger/StampManager" unique_id=190337953]
 
 [node name="StampDBase" type="Node2D" parent="ObjMananger/StampManager/StampBases" unique_id=271302100]
-position = Vector2(319, 572)
+position = Vector2(419.965, 624.99)
 
 [node name="Sprite2D" type="Sprite2D" parent="ObjMananger/StampManager/StampBases/StampDBase" unique_id=56294941]
 z_index = -1
@@ -83,7 +85,7 @@ region_enabled = true
 region_rect = Rect2(131, 34, 110, 36)
 
 [node name="StampABase" type="Node2D" parent="ObjMananger/StampManager/StampBases" unique_id=80963789]
-position = Vector2(314, 508)
+position = Vector2(418.535, 508)
 
 [node name="Sprite2D" type="Sprite2D" parent="ObjMananger/StampManager/StampBases/StampABase" unique_id=755435277]
 z_index = -1
@@ -93,7 +95,8 @@ region_enabled = true
 region_rect = Rect2(16, 34, 110, 36)
 
 [node name="StampD" type="Node2D" parent="ObjMananger/StampManager" unique_id=1634686490]
-position = Vector2(319, 572)
+z_index = 2
+position = Vector2(419.965, 624.99)
 
 [node name="Sprite2D" type="Sprite2D" parent="ObjMananger/StampManager/StampD" unique_id=579423958]
 texture = ExtResource("9_4c57u")
@@ -105,7 +108,8 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_uj6oh")
 
 [node name="StampA" type="Node2D" parent="ObjMananger/StampManager" unique_id=966396235]
-position = Vector2(316, 507)
+z_index = 2
+position = Vector2(418.535, 507)
 
 [node name="Sprite2D" type="Sprite2D" parent="ObjMananger/StampManager/StampA" unique_id=1452018324]
 texture = ExtResource("8_kek77")
@@ -117,7 +121,8 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_uj6oh")
 
 [node name="IDcard" parent="ObjMananger" unique_id=2000753673 instance=ExtResource("12_vivmo")]
-position = Vector2(171, 215)
+z_index = 2
+position = Vector2(45, 602)
 
 [node name="SubmitUI" type="CanvasLayer" parent="." unique_id=1445651725]
 script = ExtResource("12_submitui")
@@ -159,7 +164,7 @@ script = ExtResource("13_ycdy4")
 npc_scene = ExtResource("14_w48qg")
 
 [node name="NPCSpawnPoint" type="Marker2D" parent="NPCManager" unique_id=816844673]
-position = Vector2(-352, 12)
+position = Vector2(-350, 100)
 
 [node name="NPCContainer" type="Node2D" parent="NPCManager" unique_id=385969058]
 position = Vector2(-694, -148)
@@ -168,4 +173,4 @@ position = Vector2(-694, -148)
 position = Vector2(-347, 141)
 
 [node name="NPCExitPoint" type="Marker2D" parent="NPCManager" unique_id=1994743688]
-position = Vector2(-353, -34)
+position = Vector2(-350, 100)

@@ -1,12 +1,16 @@
 [gd_scene format=3 uid="uid://btaif0qcgopsa"]
 
 [ext_resource type="Script" uid="uid://br7q66tg5kkms" path="res://npc.gd" id="1_ll5ud"]
-[ext_resource type="Texture2D" uid="uid://dteeys8vw5rhh" path="res://Assets/Export/Characters/Ceila.png" id="2_ll5ud"]
+[ext_resource type="Texture2D" uid="uid://bdvuswn3sa5vb" path="res://Assets/Export/Characters/Male_Base.png" id="2_ll5ud"]
 
 [node name="NPC" type="CharacterBody2D" unique_id=1256028127]
 script = ExtResource("1_ll5ud")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1555134312]
-position = Vector2(0.5, -12.500008)
-scale = Vector2(1.149, 1)
+[node name="MaleBase" type="Sprite2D" parent="." unique_id=2062387533]
 texture = ExtResource("2_ll5ud")
+
+[node name="Cloth" type="Sprite2D" parent="." unique_id=1327325521]
+
+[node name="Hair" type="Sprite2D" parent="." unique_id=945437460]
+
+[node name="Eye" type="Sprite2D" parent="." unique_id=1546410976]
