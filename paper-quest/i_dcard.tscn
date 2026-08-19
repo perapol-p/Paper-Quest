@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cuvx8n0jac1od" path="res://Assets/Export/Items/Small/ID_Card_Small.png" id="3_xra2y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0qol"]
-size = Vector2(33.5, 17.5)
+size = Vector2(135, 56)
 
 [node name="IDcard" type="Node2D" unique_id=2000753673]
 scale = Vector2(2, 2)

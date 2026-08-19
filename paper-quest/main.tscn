@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://ujpycj5ujd3l" path="res://i_dcard.tscn" id="12_vivmo"]
 [ext_resource type="Script" uid="uid://cmvvnpipit3us" path="res://npc_manager.gd" id="13_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://btaif0qcgopsa" path="res://NPC.tscn" id="14_w48qg"]
+[ext_resource type="Texture2D" path="res://Assets/Export/Items/Small/Bell.png" id="15_bell"]
+[ext_resource type="Script" path="res://summary_ui.gd" id="16_summaryui"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uj6oh"]
 size = Vector2(106, 33)
@@ -129,19 +131,21 @@ position = Vector2(45, 602)
 script = ExtResource("12_submitui")
 quest_paper_path = NodePath("../ObjMananger/QuestPaperSmall")
 
-[node name="SubmitButton" type="Button" parent="SubmitUI" unique_id=429675122]
+[node name="SubmitButton" type="TextureButton" parent="SubmitUI" unique_id=429675122]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -140.0
-offset_top = -60.0
+offset_left = -100.0
+offset_top = -100.0
 offset_right = -20.0
 offset_bottom = -20.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "ส่งเควส"
+texture_normal = ExtResource("15_bell")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="ResultLabel" type="Label" parent="SubmitUI" unique_id=1290756748]
 anchors_preset = 3
@@ -175,3 +179,54 @@ position = Vector2(-347, 141)
 
 [node name="NPCExitPoint" type="Marker2D" parent="NPCManager" unique_id=1994743688]
 position = Vector2(-350, 100)
+
+[node name="SummaryUI" type="CanvasLayer" parent="." unique_id=1994743700]
+layer = 10
+script = ExtResource("16_summaryui")
+
+[node name="Dim" type="ColorRect" parent="SummaryUI" unique_id=1994743701]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="Panel" type="PanelContainer" parent="SummaryUI" unique_id=1994743702]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -110.0
+offset_right = 160.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="SummaryUI/Panel" unique_id=1994743703]
+custom_minimum_size = Vector2(280, 0)
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="SummaryUI/Panel/VBox" unique_id=1994743704]
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+text = "สรุปผลวันนี้"
+
+[node name="CorrectLabel" type="Label" parent="SummaryUI/Panel/VBox" unique_id=1994743705]
+theme_override_colors/font_color = Color(0.15, 0.5, 0.15, 1)
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+text = "ทำถูก: 0 คน"
+
+[node name="WrongLabel" type="Label" parent="SummaryUI/Panel/VBox" unique_id=1994743706]
+theme_override_colors/font_color = Color(0.7, 0.1, 0.1, 1)
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+text = "ทำผิด: 0 คน"
+
+[node name="RestartButton" type="Button" parent="SummaryUI/Panel/VBox" unique_id=1994743707]
+custom_minimum_size = Vector2(0, 40)
+theme_override_font_sizes/font_size = 20
+text = "เล่นใหม่"

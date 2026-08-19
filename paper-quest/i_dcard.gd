@@ -53,8 +53,10 @@ var state: State = State.CLOSED
 var screen_size: Vector2
 var home_position: Vector2
 
-## ลากผ่านเปอร์เซ็นต์นี้ของหน้าจอแล้วเปิด
-@export var open_zone_x_ratio: float = 0.55
+## ต้องลากผ่านเปอร์เซ็นต์นี้ของหน้าจอแล้วเปิด
+## 0.32 ~= ขอบซ้ายของโต๊ะจริงในฉาก (Table.png กว้าง 792px จากจอ 1152px)
+## แค่ลากไปแตะขอบโต๊ะก็เปิดเลย ไม่ต้องลากลึกเข้าไปกลางโต๊ะ
+@export var open_zone_x_ratio: float = 0.32
 
 
 # =====================================================
@@ -141,6 +143,14 @@ func _ready() -> void:
 
 
 	# =================================================
+	# ซ่อนไว้ก่อน จนกว่าจะมีลูกค้ามายืนที่โต๊ะ
+	# (ดู npc_manager.gd -> _on_npc_arrived)
+	# =================================================
+
+	visible = false
+
+
+	# =================================================
 	# ObjManager
 	# =================================================
 
@@ -153,6 +163,27 @@ func _ready() -> void:
 # =====================================================
 # สุ่มข้อมูลคน
 # =====================================================
+
+func reset_card() -> void:
+
+	generate_persona()
+
+	if state == State.EXPANDED:
+		_close()
+
+	# มีข้อมูลลูกค้าใหม่แล้ว -> โชว์บัตรบนโต๊ะ
+	visible = true
+
+
+## หุบบัตรกลับเป็นใบเล็กแล้วซ่อนไปเลย ไม่สุ่มข้อมูลใหม่
+## ใช้ตอนส่งเควสเสร็จ ให้หายไปพร้อมกับใบเควส (ดู submit_ui.gd)
+func close_card() -> void:
+
+	if state == State.EXPANDED:
+		_close()
+
+	visible = false
+
 
 func generate_persona() -> void:
 
@@ -246,13 +277,16 @@ func _expand() -> void:
 
 
 	# =================================================
-	# ย้ายไปตำแหน่งฝั่งขวา
-	# เหมือน Quest Paper
+	# กางออกตรงจุดที่ปล่อยเมาส์เลย ไม่ต้องเด้งไปกลางจอ
+	# (position ตอนนี้คือจุดที่ลากมาปล่อยอยู่แล้ว)
+	# กันไม่ให้ใบใหญ่ล้นขอบจอ ถ้าปล่อยใกล้ขอบเกินไป
 	# =================================================
 
+	var half_size: Vector2 = big_shape.size * 0.5
+
 	position = Vector2(
-		screen_size.x * ((1.0 + open_zone_x_ratio) * 0.5),
-		screen_size.y * 0.5
+		clamp(position.x, half_size.x, screen_size.x - half_size.x),
+		clamp(position.y, half_size.y, screen_size.y - half_size.y)
 	)
 
 
