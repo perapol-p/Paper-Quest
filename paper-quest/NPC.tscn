@@ -11,6 +11,9 @@ texture = ExtResource("2_ll5ud")
 
 [node name="Cloth" type="Sprite2D" parent="." unique_id=1327325521]
 
-[node name="Hair" type="Sprite2D" parent="." unique_id=945437460]
+[node name="FrontHair" type="Sprite2D" parent="." unique_id=945437460]
 
 [node name="Eye" type="Sprite2D" parent="." unique_id=1546410976]
+
+[node name="BackHair" type="Sprite2D" parent="." unique_id=1389399712]
+z_index = -1

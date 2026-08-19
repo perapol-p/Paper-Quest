@@ -5,7 +5,8 @@ signal finished
 
 @onready var cloth = $Cloth
 @onready var eye = $Eye
-@onready var hair = $Hair
+@onready var front_hair = $FrontHair
+@onready var back_hair =$BackHair
 
 @export var speed: float = 100.0
 
@@ -79,30 +80,72 @@ var eyes = [
 ]
 
 var hairs = [
-	preload("res://Assets/Export/Characters/Hair/Black/MaleBl_F_01.png"),
-	preload("res://Assets/Export/Characters/Hair/Black/MaleBl_F_02.png"),
-	preload("res://Assets/Export/Characters/Hair/Black/MaleBl_F_03.png"),
-	preload("res://Assets/Export/Characters/Hair/Blue/MaleB_F_01.png"),
-	preload("res://Assets/Export/Characters/Hair/Blue/MaleB_F_02.png"),
-	preload("res://Assets/Export/Characters/Hair/Blue/MaleB_F_03.png"),
-	preload("res://Assets/Export/Characters/Hair/Brown/MaleBr_F_01.png"),
-	preload("res://Assets/Export/Characters/Hair/Brown/MaleBr_F_02.png"),
-	preload("res://Assets/Export/Characters/Hair/Brown/MaleBr_F_03.png"),
-	preload("res://Assets/Export/Characters/Hair/Green/MaleG_F_01.png"),
-	preload("res://Assets/Export/Characters/Hair/Green/MaleG_F_02.png"),
-	preload("res://Assets/Export/Characters/Hair/Green/MaleG_F_03.png"),
-	preload("res://Assets/Export/Characters/Hair/Red/MaleR_F_01.png"),
-	preload("res://Assets/Export/Characters/Hair/Red/MaleR_F_02.png"),
-	preload("res://Assets/Export/Characters/Hair/Red/MaleR_F_03.png"),
-	preload("res://Assets/Export/Characters/Hair/Yellow/MaleY_F_01.png"),
-	preload("res://Assets/Export/Characters/Hair/Yellow/MaleY_F_02.png"),
-	preload("res://Assets/Export/Characters/Hair/Yellow/MaleY_F_03.png"),
+	{
+	"front" :preload("res://Assets/Export/Characters/Hair/Black/MaleBl_F_01.png"),
+	"back"  :preload("res://Assets/Export/Characters/Hair/Black/MaleBl_B_01.png") 
+	},{
+	"front" :preload("res://Assets/Export/Characters/Hair/Black/MaleBl_F_02.png"),
+	"back" :preload("res://Assets/Export/Characters/Hair/Black/MaleBl_B_02.png")
+	},{
+	"front" :preload("res://Assets/Export/Characters/Hair/Black/MaleBl_F_03.png"),
+	"back"  :preload("res://Assets/Export/Characters/Hair/Black/MaleBl_B_03.png")
+	},{
+	"front" :preload("res://Assets/Export/Characters/Hair/Blue/MaleB_F_01.png"),
+	"back"  :preload("res://Assets/Export/Characters/Hair/Blue/MaleB_B_01.png")
+	},{
+	"front" :preload("res://Assets/Export/Characters/Hair/Blue/MaleB_F_02.png"),
+	"back"  :preload("res://Assets/Export/Characters/Hair/Blue/MaleB_B_02.png"),
+	},{
+	"front" :preload("res://Assets/Export/Characters/Hair/Blue/MaleB_F_03.png"),
+	"back"  :preload("res://Assets/Export/Characters/Hair/Blue/MaleB_B_03.png")
+	},{
+	"front" :preload("res://Assets/Export/Characters/Hair/Brown/MaleBr_F_01.png"),
+	"back"  :preload("res://Assets/Export/Characters/Hair/Brown/MaleBr_B_01.png")
+	},{
+	"front" :preload("res://Assets/Export/Characters/Hair/Brown/MaleBr_F_02.png"),
+	"back"  :preload("res://Assets/Export/Characters/Hair/Brown/MaleBr_B_02.png")
+	},{
+	"front" :preload("res://Assets/Export/Characters/Hair/Brown/MaleBr_F_03.png"),
+	"back"  :preload("res://Assets/Export/Characters/Hair/Brown/MaleBr_B_03.png")
+	},{
+	"front" :preload("res://Assets/Export/Characters/Hair/Green/MaleG_F_01.png"),
+	"back"  :preload("res://Assets/Export/Characters/Hair/Green/MaleG_B_01.png")
+	},{
+	"front" :preload("res://Assets/Export/Characters/Hair/Green/MaleG_F_02.png"),
+	"back"  :preload("res://Assets/Export/Characters/Hair/Green/MaleG_B_02.png")
+	},{
+	"front" :preload("res://Assets/Export/Characters/Hair/Green/MaleG_F_03.png"),
+	"back"  :preload("res://Assets/Export/Characters/Hair/Green/MaleG_B_03.png")
+	},{
+	"front" :preload("res://Assets/Export/Characters/Hair/Red/MaleR_F_01.png"),
+	"back"  :preload("res://Assets/Export/Characters/Hair/Red/MaleR_B_01.png")
+	},{
+	"front" :preload("res://Assets/Export/Characters/Hair/Red/MaleR_F_02.png"),
+	"back"  :preload("res://Assets/Export/Characters/Hair/Red/MaleR_B_02.png")
+	},{
+	"front" :preload("res://Assets/Export/Characters/Hair/Red/MaleR_F_03.png"),
+	"back"  :preload("res://Assets/Export/Characters/Hair/Red/MaleR_B_03.png")
+	},{
+	"front" :preload("res://Assets/Export/Characters/Hair/Yellow/MaleY_F_01.png"),
+	"back"  :preload("res://Assets/Export/Characters/Hair/Yellow/MaleY_B_01.png")
+	},{
+	"front" :preload("res://Assets/Export/Characters/Hair/Yellow/MaleY_F_02.png"),
+	"back"  :preload("res://Assets/Export/Characters/Hair/Yellow/MaleY_B_02.png")
+	},{
+	"front" :preload("res://Assets/Export/Characters/Hair/Yellow/MaleY_F_03.png"),
+	"back"  :preload("res://Assets/Export/Characters/Hair/Yellow/MaleY_B_03.png")
+	},{
+	"front" :preload("res://Assets/Export/Characters/Hair/Bald/Male_F_00.png"),
+	"back" :preload("res://Assets/Export/Characters/Hair/Bald/Male_B_00.png")
+	}
 ]
 
 func random_npc():
 	cloth.texture = cloths.pick_random()
 	eye.texture = eyes.pick_random()
-	hair.texture = hairs.pick_random()
+	var select_hair = hairs.pick_random()
+	front_hair.texture = select_hair["front"]
+	back_hair.texture = select_hair["back"]
 
 func _ready() -> void:
 	random_npc()
