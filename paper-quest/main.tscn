@@ -17,8 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://ujpycj5ujd3l" path="res://i_dcard.tscn" id="12_vivmo"]
 [ext_resource type="Script" uid="uid://cmvvnpipit3us" path="res://npc_manager.gd" id="13_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://btaif0qcgopsa" path="res://NPC.tscn" id="14_w48qg"]
-[ext_resource type="Texture2D" path="res://Assets/Export/Items/Small/Bell.png" id="15_bell"]
-[ext_resource type="Script" path="res://summary_ui.gd" id="16_summaryui"]
+[ext_resource type="Texture2D" uid="uid://cfiexn76i36ya" path="res://Assets/Export/Items/Small/Bell.png" id="15_bell"]
+[ext_resource type="Script" uid="uid://cilt8dru0nn1x" path="res://summary_ui.gd" id="16_summaryui"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uj6oh"]
 size = Vector2(106, 33)
@@ -28,7 +28,6 @@ size = Vector2(106, 33)
 [node name="BackGround" type="Node2D" parent="." unique_id=1033314876]
 
 [node name="GuildArea" type="Node2D" parent="BackGround" unique_id=880055905]
-z_index = -10
 
 [node name="SunnyBg" type="Sprite2D" parent="BackGround/GuildArea" unique_id=1427922574]
 position = Vector2(180.00002, 324)
@@ -46,7 +45,7 @@ scale = Vector2(1.8, 1.8)
 texture = ExtResource("3_cegan")
 
 [node name="PlacematSmall" type="Sprite2D" parent="BackGround/GuildArea" unique_id=772862501]
-z_index = 1
+z_index = 2
 position = Vector2(180.00002, 591.00006)
 scale = Vector2(1.8, 1.8)
 texture = ExtResource("4_82xsv")
@@ -207,26 +206,31 @@ grow_vertical = 2
 
 [node name="VBox" type="VBoxContainer" parent="SummaryUI/Panel" unique_id=1994743703]
 custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
 alignment = 1
 
 [node name="TitleLabel" type="Label" parent="SummaryUI/Panel/VBox" unique_id=1994743704]
+layout_mode = 2
 theme_override_font_sizes/font_size = 24
-horizontal_alignment = 1
 text = "สรุปผลวันนี้"
+horizontal_alignment = 1
 
 [node name="CorrectLabel" type="Label" parent="SummaryUI/Panel/VBox" unique_id=1994743705]
+layout_mode = 2
 theme_override_colors/font_color = Color(0.15, 0.5, 0.15, 1)
 theme_override_font_sizes/font_size = 22
-horizontal_alignment = 1
 text = "ทำถูก: 0 คน"
+horizontal_alignment = 1
 
 [node name="WrongLabel" type="Label" parent="SummaryUI/Panel/VBox" unique_id=1994743706]
+layout_mode = 2
 theme_override_colors/font_color = Color(0.7, 0.1, 0.1, 1)
 theme_override_font_sizes/font_size = 22
-horizontal_alignment = 1
 text = "ทำผิด: 0 คน"
+horizontal_alignment = 1
 
 [node name="RestartButton" type="Button" parent="SummaryUI/Panel/VBox" unique_id=1994743707]
 custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "เล่นใหม่"
