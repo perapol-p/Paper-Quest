@@ -160,14 +160,25 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -320.0
-offset_top = -104.0
+offset_top = -140.0
 offset_right = -20.0
-offset_bottom = -64.0
+offset_bottom = -106.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_colors/font_color = Color(0.541, 0.157, 0.145, 1)
-theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 16
 horizontal_alignment = 2
+
+[node name="SubmitButtonLeft" type="TextureButton" parent="SubmitUI" unique_id=772862510]
+anchors_preset = 0
+offset_left = 237.0
+offset_top = 518.0
+offset_right = 313.0
+offset_bottom = 572.0
+modulate = Color(1, 1, 1, 0)
+texture_normal = ExtResource("15_bell")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="NPCManager" type="Node2D" parent="." unique_id=1705403971]
 position = Vector2(526, 303)

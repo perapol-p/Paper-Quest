@@ -3,6 +3,7 @@ extends CanvasLayer
 ## UI ปุ่มส่งเควส + ข้อความผลลัพธ์ ลอยตายตัวมุมขวาล่างของจอ
 ## ไม่ผูกกับตำแหน่งของกระดาษเควส เลยไม่ขยับตามตอนกระดาษกาง/หุบ/ลาก
 ## ค้างโชว์อยู่ตลอดเวลาเหมือนกระดิ่งฝั่งซ้าย (เป็นพรอปประจำที่ + ปุ่มกดส่งเควสในตัวเดียวกัน)
+## กระดิ่งฝั่งซ้าย (SubmitButtonLeft) เป็นปุ่มโปร่งใสซ้อนทับพรอปตกแต่งเดิม -> กดส่งเควสได้เหมือนกัน
 
 ## ลากโหนด QuestPaperSmall มาใส่ตรงนี้ใน Inspector
 @export var quest_paper_path: NodePath
@@ -10,11 +11,13 @@ extends CanvasLayer
 @onready var quest_paper: QuestPaperSmall = get_node(quest_paper_path)
 
 @onready var submit_button: BaseButton = $SubmitButton
+@onready var submit_button_left: BaseButton = $SubmitButtonLeft
 @onready var result_label: Label = $ResultLabel
 
 
 func _ready() -> void:
 	submit_button.pressed.connect(_on_submit_pressed)
+	submit_button_left.pressed.connect(_on_submit_pressed)
 
 	if quest_paper:
 		quest_paper.verdict_changed.connect(_on_verdict_changed)
@@ -43,9 +46,9 @@ func _on_submit_pressed() -> void:
 	var result: Dictionary = quest_paper.submit_quest()
 
 	# ถ้ายังไม่ได้ปั้มตราเลย ให้บอกผู้เล่นก่อน (ไม่นับเป็นการส่งเควส)
+	# ข้อความสีขาวเสมอ (ไม่ไล่สีตาม result.color แล้ว กันทับกระดิ่งจนอ่านไม่ออก)
 	if quest_paper.current_verdict == "":
 		result_label.text = result.text
-		result_label.modulate = result.color
 		return
 
 	# ไม่โชว์ว่าถูกหรือผิดตอนนี้ ให้ไปดูสรุปรวมตอนจบวันแทน
@@ -57,8 +60,9 @@ func _on_submit_pressed() -> void:
 
 	# กันกดส่งซ้ำระหว่างรอเอกสารใหม่
 	submit_button.disabled = true
+	submit_button_left.disabled = true
 
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(1.0).timeout
 
 	# หุบกระดาษ + บัตร กลับเป็นใบเล็กพร้อมกัน (ยังไม่สุ่มข้อมูลใหม่)
 	# ข้อมูลใหม่ (เควส + บัตร) จะถูกสุ่มพร้อมกันตอนลูกค้าคนใหม่เดินมาถึงโต๊ะ
@@ -75,3 +79,4 @@ func _on_submit_pressed() -> void:
 	
 	result_label.text = ""
 	submit_button.disabled = false
+	submit_button_left.disabled = false
