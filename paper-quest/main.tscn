@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dpjy5qtacg5wr" path="res://Assets/Export/BG/Guild BG/Placemat_Small.png" id="4_82xsv"]
 [ext_resource type="Texture2D" uid="uid://b6uittb27wyib" path="res://Assets/Export/BG/Table BG/Table.png" id="5_getpj"]
 [ext_resource type="PackedScene" uid="uid://c8f2n5uawql4h" path="res://quests/quest_paper_small.tscn" id="5_papersmall"]
+[ext_resource type="Texture2D" uid="uid://bxt4colb17tf7" path="res://Assets/Export/BG/Guild BG/Table_Small.png" id="6_d13ii"]
 [ext_resource type="Texture2D" uid="uid://dwafyuol0fvco" path="res://Assets/Export/BG/Table BG/Placemat.png" id="6_ryguw"]
 [ext_resource type="Script" uid="uid://lmf0xl47tc4m" path="res://stamp_manager.gd" id="8_4c57u"]
 [ext_resource type="Texture2D" uid="uid://b5fucwic6pcws" path="res://Assets/Picture/Items/Stamp/Stamp_A.png" id="8_kek77"]
@@ -20,81 +21,110 @@
 [ext_resource type="Texture2D" uid="uid://cfiexn76i36ya" path="res://Assets/Export/Items/Small/Bell_Small.png" id="15_bell"]
 [ext_resource type="Script" uid="uid://cilt8dru0nn1x" path="res://summary_ui.gd" id="16_summaryui"]
 [ext_resource type="Texture2D" uid="uid://dq2m8x5bell01" path="res://Assets/Export/Items/Big/Bell.png" id="17_bell_big"]
+[ext_resource type="Script" uid="uid://cvy41lb3bfvjk" path="res://date_ui.gd" id="21_getpj"]
+[ext_resource type="FontFile" uid="uid://cco3a1jfv4tn7" path="res://Assets/Fonts/EN_Pixel_Font.ttf" id="22_ryguw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uj6oh"]
 size = Vector2(106, 33)
 
 [node name="Main" type="Node2D" unique_id=1758480046]
+metadata/_edit_lock_ = true
 
 [node name="BackGround" type="Node2D" parent="." unique_id=1033314876]
+metadata/_edit_lock_ = true
 
 [node name="GuildArea" type="Node2D" parent="BackGround" unique_id=880055905]
+metadata/_edit_lock_ = true
 
 [node name="SunnyBg" type="Sprite2D" parent="BackGround/GuildArea" unique_id=1427922574]
 position = Vector2(180.00002, 324)
 scale = Vector2(1.8, 1.8)
 texture = ExtResource("2_074og")
+metadata/_edit_lock_ = true
 
 [node name="Town" type="Sprite2D" parent="BackGround/GuildArea" unique_id=834959835]
 position = Vector2(180.00002, 324)
 scale = Vector2(1.8, 1.8)
 texture = ExtResource("1_yaehf")
+metadata/_edit_lock_ = true
 
 [node name="Wall" type="Sprite2D" parent="BackGround/GuildArea" unique_id=919234962]
 position = Vector2(180.00002, 324)
 scale = Vector2(1.8, 1.8)
 texture = ExtResource("3_cegan")
+metadata/_edit_lock_ = true
 
 [node name="PlacematSmall" type="Sprite2D" parent="BackGround/GuildArea" unique_id=772862501]
-z_index = 2
+z_index = 11
 position = Vector2(180.00002, 591.00006)
 scale = Vector2(1.8, 1.8)
 texture = ExtResource("4_82xsv")
+metadata/_edit_lock_ = true
 
 [node name="BellProp" type="Sprite2D" parent="BackGround/GuildArea" unique_id=772862502]
-z_index = 3
+z_index = 11
 position = Vector2(308, 545)
 scale = Vector2(1.8, 1.8)
 texture = ExtResource("15_bell")
+metadata/_edit_lock_ = true
+
+[node name="TableSmall" type="Sprite2D" parent="BackGround/GuildArea" unique_id=1505289911]
+z_index = 10
+position = Vector2(180.5, 580.5)
+scale = Vector2(1.795, 1.5975611)
+texture = ExtResource("6_d13ii")
 
 [node name="TableArea" type="Node2D" parent="BackGround" unique_id=1873085848]
+metadata/_edit_lock_ = true
 
 [node name="Table" type="Sprite2D" parent="BackGround/TableArea" unique_id=751655200]
 position = Vector2(756.00006, 324)
 scale = Vector2(1.8, 1.8)
 texture = ExtResource("5_getpj")
+metadata/_edit_lock_ = true
 
 [node name="Placemat" type="Sprite2D" parent="BackGround/TableArea" unique_id=874408175]
 position = Vector2(756, 324)
 scale = Vector2(1.8, 1.8)
 texture = ExtResource("6_ryguw")
+metadata/_edit_lock_ = true
 
 [node name="QuestBoard" parent="." unique_id=443051214 instance=ExtResource("3_qboard")]
 visible = false
+metadata/_edit_lock_ = true
 
 [node name="ObjMananger" type="Node2D" parent="." unique_id=1469347821]
 script = ExtResource("1_0xm2m")
+metadata/_edit_lock_ = true
 
-[node name="QuestPaperSmall" parent="ObjMananger" unique_id=562175 instance=ExtResource("5_papersmall")]
-z_index = 5
+[node name="QuestPaperSmall" parent="ObjMananger" unique_id=562175 node_paths=PackedStringArray("id_card", "date_ui") instance=ExtResource("5_papersmall")]
+z_index = 11
 position = Vector2(184, 590)
+id_card = NodePath("../IDcard")
+date_ui = NodePath("../../DateUI")
+metadata/_edit_lock_ = true
 
 [node name="StampManager" type="Node2D" parent="ObjMananger" unique_id=821298446]
 script = ExtResource("8_4c57u")
+metadata/_edit_lock_ = true
 
 [node name="StampBases" type="Node2D" parent="ObjMananger/StampManager" unique_id=190337953]
+metadata/_edit_lock_ = true
 
 [node name="StampDBase" type="Node2D" parent="ObjMananger/StampManager/StampBases" unique_id=271302100]
 position = Vector2(419.965, 624.99)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ObjMananger/StampManager/StampBases/StampDBase" unique_id=56294941]
 z_index = -1
 texture = ExtResource("10_dg77c")
 region_enabled = true
 region_rect = Rect2(131, 34, 110, 36)
+metadata/_edit_lock_ = true
 
 [node name="StampABase" type="Node2D" parent="ObjMananger/StampManager/StampBases" unique_id=80963789]
 position = Vector2(418.535, 508)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ObjMananger/StampManager/StampBases/StampABase" unique_id=755435277]
 z_index = -1
@@ -102,35 +132,43 @@ position = Vector2(0, -2)
 texture = ExtResource("10_dg77c")
 region_enabled = true
 region_rect = Rect2(16, 34, 110, 36)
+metadata/_edit_lock_ = true
 
 [node name="StampD" type="Node2D" parent="ObjMananger/StampManager" unique_id=1634686490]
 z_index = 2
 position = Vector2(419.965, 624.99)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ObjMananger/StampManager/StampD" unique_id=579423958]
 texture = ExtResource("9_4c57u")
+metadata/_edit_lock_ = true
 
 [node name="Area2D" type="Area2D" parent="ObjMananger/StampManager/StampD" unique_id=110718149]
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObjMananger/StampManager/StampD/Area2D" unique_id=361818922]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_uj6oh")
+metadata/_edit_lock_ = true
 
 [node name="StampA" type="Node2D" parent="ObjMananger/StampManager" unique_id=966396235]
 z_index = 2
 position = Vector2(418.535, 507)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ObjMananger/StampManager/StampA" unique_id=1452018324]
 texture = ExtResource("8_kek77")
+metadata/_edit_lock_ = true
 
 [node name="Area2D" type="Area2D" parent="ObjMananger/StampManager/StampA" unique_id=936663510]
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObjMananger/StampManager/StampA/Area2D" unique_id=60755954]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_uj6oh")
 
 [node name="IDcard" parent="ObjMananger" unique_id=2000753673 instance=ExtResource("12_vivmo")]
-z_index = 5
+z_index = 11
 position = Vector2(45, 602)
 
 [node name="SubmitUI" type="CanvasLayer" parent="." unique_id=1445651725]
@@ -152,6 +190,7 @@ grow_vertical = 0
 texture_normal = ExtResource("17_bell_big")
 ignore_texture_size = true
 stretch_mode = 5
+metadata/_edit_lock_ = true
 
 [node name="ResultLabel" type="Label" parent="SubmitUI" unique_id=1290756748]
 anchors_preset = 3
@@ -168,37 +207,41 @@ grow_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 16
 horizontal_alignment = 2
+metadata/_edit_lock_ = true
 
 [node name="SubmitButtonLeft" type="TextureButton" parent="SubmitUI" unique_id=772862510]
-anchors_preset = 0
+modulate = Color(1, 1, 1, 0)
 offset_left = 237.0
 offset_top = 518.0
 offset_right = 313.0
 offset_bottom = 572.0
-modulate = Color(1, 1, 1, 0)
 texture_normal = ExtResource("15_bell")
 ignore_texture_size = true
 stretch_mode = 5
+metadata/_edit_lock_ = true
 
 [node name="NPCManager" type="Node2D" parent="." unique_id=1705403971]
 position = Vector2(526, 303)
 script = ExtResource("13_ycdy4")
 npc_scene = ExtResource("14_w48qg")
+metadata/_edit_lock_ = true
 
 [node name="NPCSpawnPoint" type="Marker2D" parent="NPCManager" unique_id=816844673]
-position = Vector2(-350, 100)
+position = Vector2(-350, 14)
 
 [node name="NPCContainer" type="Node2D" parent="NPCManager" unique_id=385969058]
 position = Vector2(-694, -148)
+metadata/_edit_lock_ = true
 
 [node name="NPCDeskPoint" type="Marker2D" parent="NPCManager" unique_id=1717823640]
-position = Vector2(-347, 141)
+position = Vector2(-351, 38)
 
 [node name="NPCExitPoint" type="Marker2D" parent="NPCManager" unique_id=1994743688]
-position = Vector2(-350, 100)
+position = Vector2(-351, 8)
 
 [node name="SummaryUI" type="CanvasLayer" parent="." unique_id=1994743700]
 layer = 10
+visible = false
 script = ExtResource("16_summaryui")
 
 [node name="Dim" type="ColorRect" parent="SummaryUI" unique_id=1994743701]
@@ -208,6 +251,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.6)
+metadata/_edit_lock_ = true
 
 [node name="Panel" type="PanelContainer" parent="SummaryUI" unique_id=1994743702]
 anchors_preset = 8
@@ -221,17 +265,20 @@ offset_right = 160.0
 offset_bottom = 110.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
 
 [node name="VBox" type="VBoxContainer" parent="SummaryUI/Panel" unique_id=1994743703]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 alignment = 1
+metadata/_edit_lock_ = true
 
 [node name="TitleLabel" type="Label" parent="SummaryUI/Panel/VBox" unique_id=1994743704]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "สรุปผลวันนี้"
 horizontal_alignment = 1
+metadata/_edit_lock_ = true
 
 [node name="CorrectLabel" type="Label" parent="SummaryUI/Panel/VBox" unique_id=1994743705]
 layout_mode = 2
@@ -239,6 +286,7 @@ theme_override_colors/font_color = Color(0.15, 0.5, 0.15, 1)
 theme_override_font_sizes/font_size = 22
 text = "ทำถูก: 0 คน"
 horizontal_alignment = 1
+metadata/_edit_lock_ = true
 
 [node name="WrongLabel" type="Label" parent="SummaryUI/Panel/VBox" unique_id=1994743706]
 layout_mode = 2
@@ -246,9 +294,38 @@ theme_override_colors/font_color = Color(0.7, 0.1, 0.1, 1)
 theme_override_font_sizes/font_size = 22
 text = "ทำผิด: 0 คน"
 horizontal_alignment = 1
+metadata/_edit_lock_ = true
 
 [node name="RestartButton" type="Button" parent="SummaryUI/Panel/VBox" unique_id=1994743707]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "เล่นใหม่"
+metadata/_edit_lock_ = true
+
+[node name="DateUI" type="CanvasLayer" parent="." unique_id=1827289497]
+script = ExtResource("21_getpj")
+
+[node name="Control" type="Control" parent="DateUI" unique_id=334526887]
+layout_mode = 3
+anchor_right = 0.104
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 563.0
+offset_right = 59.192
+offset_bottom = -4.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DateUI/Control" unique_id=13450001]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.37
+anchor_right = 1.264
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 33.03
+offset_right = -54.992004
+offset_bottom = 39.0
+
+[node name="DateLabel" type="Label" parent="DateUI/Control/VBoxContainer" unique_id=357037053]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("22_ryguw")

@@ -28,6 +28,11 @@ var max_customers_per_day: int = 5
 
 var current_day: int = 1
 
+# วันที่จริงในเกม
+var date_day: int = 14
+var date_month: int = 9
+var date_year: int = 1866
+
 var customers_served: int = 0
 var correct_count: int = 0
 var wrong_count: int = 0
@@ -59,6 +64,12 @@ func _ready() -> void:
 ## เริ่มเกมใหม่ตั้งแต่วันที่ 1 รีเซ็ตทั้งตัวนับรายวันและผลรวมทั้งเกม
 func reset_game() -> void:
 	current_day = 1
+	
+	# วันที่จริงเริ่มต้น
+	date_day = 14
+	date_month = 9
+	date_year = 1866
+	
 	total_correct = 0
 	total_wrong = 0
 	total_customers = 0
@@ -80,6 +91,7 @@ func advance_day() -> void:
 		return
 
 	current_day += 1
+	date_day += 1
 	start_new_day()
 
 

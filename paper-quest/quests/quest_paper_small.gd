@@ -28,6 +28,9 @@ const GuildFakeTextures: Array[Texture2D] = [
 ## ระยะขอบของกล่องข้อความ เทียบกับขนาด sprite ตอนกางออก (พิกเซล)
 @export var expanded_content_margin: float = 24.0
 
+@export var id_card: Node
+@export var date_ui: Node
+
 enum State { CLOSED, EXPANDED }
 
 var quest_data: QuestData
@@ -211,6 +214,41 @@ func add_stamp(stamp: Sprite2D, verdict: String = "") -> void:
 		verdict_changed.emit()
 
 
+func check_rank() -> bool:
+	if quest_data == null:
+		return false
+
+	if id_card == null:
+		return false
+
+	return id_card.is_rank_sufficient(quest_data.quest_rank)
+
+func check_expire_date() -> bool:
+	if id_card == null:
+		return false
+
+	if date_ui == null:
+		return false
+
+	var current_date: Dictionary = date_ui.get_current_date()
+
+	return id_card.is_not_expired(
+		current_date["day"],
+		current_date["month"],
+		current_date["year"]
+	)
+
+func should_approve_customer() -> bool:
+	var rank_correct: bool = check_rank()
+	var not_expired: bool = check_expire_date()
+	var guild_correct: bool = quest_data.is_guild_authentic
+
+	return (
+		rank_correct
+		and not_expired
+		and guild_correct
+	)
+
 ## เรียกจากปุ่ม "ส่งเควส" (อยู่นอกกระดาษ มุมขวาล่างของจอ)
 ## คืนค่า Dictionary {text: String, color: Color} ให้ UI เอาไปโชว์
 func submit_quest() -> Dictionary:
@@ -225,7 +263,7 @@ func submit_quest() -> Dictionary:
 			"color": Color(0.541, 0.157, 0.145),
 		}
 
-	var should_approve: bool = quest_data.is_guild_authentic
+	var should_approve: bool = should_approve_customer()
 	var player_approved: bool = current_verdict == "approve"
 	var correct: bool = player_approved == should_approve
 
