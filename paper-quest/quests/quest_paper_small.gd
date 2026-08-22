@@ -181,7 +181,7 @@ func _refresh_labels() -> void:
 	desc_label.text = quest_data.description
 	target_label.text = "เป้าหมาย: %s   x%d" % [quest_data.target_name, quest_data.target_count]
 	reward_label.text = "รางวัล: %d Gold" % quest_data.reward_gold
-	rank_label.text = "Rank %s | %s | %s" % [quest_data.quest_rank, quest_data.category_text, quest_data.rank_text]
+	rank_label.text = "Rank %s | %s" % [quest_data.quest_rank, quest_data.category_text]
 
 
 #Stamp

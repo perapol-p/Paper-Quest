@@ -17,8 +17,9 @@
 [ext_resource type="PackedScene" uid="uid://ujpycj5ujd3l" path="res://i_dcard.tscn" id="12_vivmo"]
 [ext_resource type="Script" uid="uid://cmvvnpipit3us" path="res://npc_manager.gd" id="13_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://btaif0qcgopsa" path="res://NPC.tscn" id="14_w48qg"]
-[ext_resource type="Texture2D" uid="uid://cfiexn76i36ya" path="res://Assets/Export/Items/Small/Bell.png" id="15_bell"]
+[ext_resource type="Texture2D" uid="uid://cfiexn76i36ya" path="res://Assets/Export/Items/Small/Bell_Small.png" id="15_bell"]
 [ext_resource type="Script" uid="uid://cilt8dru0nn1x" path="res://summary_ui.gd" id="16_summaryui"]
+[ext_resource type="Texture2D" uid="uid://dq2m8x5bell01" path="res://Assets/Export/Items/Big/Bell.png" id="17_bell_big"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uj6oh"]
 size = Vector2(106, 33)
@@ -50,6 +51,12 @@ position = Vector2(180.00002, 591.00006)
 scale = Vector2(1.8, 1.8)
 texture = ExtResource("4_82xsv")
 
+[node name="BellProp" type="Sprite2D" parent="BackGround/GuildArea" unique_id=772862502]
+z_index = 3
+position = Vector2(308, 545)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("15_bell")
+
 [node name="TableArea" type="Node2D" parent="BackGround" unique_id=1873085848]
 
 [node name="Table" type="Sprite2D" parent="BackGround/TableArea" unique_id=751655200]
@@ -69,7 +76,7 @@ visible = false
 script = ExtResource("1_0xm2m")
 
 [node name="QuestPaperSmall" parent="ObjMananger" unique_id=562175 instance=ExtResource("5_papersmall")]
-z_index = 2
+z_index = 5
 position = Vector2(184, 590)
 
 [node name="StampManager" type="Node2D" parent="ObjMananger" unique_id=821298446]
@@ -123,7 +130,7 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_uj6oh")
 
 [node name="IDcard" parent="ObjMananger" unique_id=2000753673 instance=ExtResource("12_vivmo")]
-z_index = 2
+z_index = 5
 position = Vector2(45, 602)
 
 [node name="SubmitUI" type="CanvasLayer" parent="." unique_id=1445651725]
@@ -142,7 +149,7 @@ offset_right = -20.0
 offset_bottom = -20.0
 grow_horizontal = 0
 grow_vertical = 0
-texture_normal = ExtResource("15_bell")
+texture_normal = ExtResource("17_bell_big")
 ignore_texture_size = true
 stretch_mode = 5
 

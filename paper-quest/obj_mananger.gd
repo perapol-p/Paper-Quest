@@ -5,6 +5,12 @@ signal item_released(item)
 var item_being_drag
 var screen_size
 
+## z_index เดิมของสิ่งที่กำลังลากอยู่ (เก็บไว้คืนค่าตอนปล่อย)
+var dragged_item_original_z: int = 0
+
+## ยกของที่กำลังจับอยู่ขึ้นไปอยู่บนสุดของทุกอย่างเสมอ (สูงกว่ากระดาษ/บัตร/กระดิ่ง/ตราปั้มทั้งหมด)
+const HELD_Z_INDEX: int = 100
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
@@ -26,9 +32,14 @@ func _input(event: InputEvent) -> void:
 			var item = raycast_check_item()
 			if item:
 				item_being_drag = item
+				# กำลังจับอยู่ -> ยกขึ้นบนสุด บังทุกอย่างที่ขวางอยู่
+				dragged_item_original_z = item.z_index
+				item.z_index = HELD_Z_INDEX
 			#Raycast check for item
 		else:
 			if item_being_drag:
+				# ปล่อยแล้ว -> คืนระดับ z_index เดิมก่อนจับ
+				item_being_drag.z_index = dragged_item_original_z
 				item_released.emit(item_being_drag)
 			item_being_drag = null
 

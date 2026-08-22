@@ -48,7 +48,7 @@ func _refresh() -> void:
 	target_label.text = "เป้าหมาย: %s   x%d" % [quest_data.target_name, quest_data.target_count]
 	reward_label.text = "รางวัล: %d Gold" % quest_data.reward_gold
 	rank_badge_label.text = quest_data.quest_rank
-	rank_text_label.text = "%s | %s" % [quest_data.category_text, quest_data.rank_text]
+	rank_text_label.text = quest_data.category_text
 
 
 func _on_close_pressed() -> void:
