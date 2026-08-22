@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 QuestDatabase="*res://quests/quest_database.gd"
-DayManager="*res://day_manager.gd"
 
 [display]
 

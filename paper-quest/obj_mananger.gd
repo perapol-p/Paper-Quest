@@ -34,44 +34,12 @@ func _input(event: InputEvent) -> void:
 
 func raycast_check_item():
 	var space_state = get_world_2d().direct_space_state
-	var mouse_pos = get_global_mouse_position()
-
 	var parameters = PhysicsPointQueryParameters2D.new()
-	parameters.position = mouse_pos
+	parameters.position = get_global_mouse_position()
 	parameters.collide_with_areas = true
 	parameters.collision_mask = 1
-	# เอาผลลัพธ์มาให้หมด (ไม่ตัดที่ 32 อันแรกเวลาฮิตบอคซ้อนกันเยอะ)
-	parameters.collide_with_bodies = false
-
-	var result = space_state.intersect_point(parameters, 32)
-
-	if result.size() == 0:
-		return null
-
-	if result.size() == 1:
+	var result = space_state.intersect_point(parameters)
+	if result.size() > 0:
+		print(result[0].collider.get_parent())
 		return result[0].collider.get_parent()
-
-	# =====================================================
-	# ฮิตบอคหลายชิ้นซ้อนทับกันตรงจุดนี้
-	# -> เลือกชิ้นที่ "ตำแหน่งจริง" (global_position) ใกล้เมาส์ที่สุด
-	#    แทนที่จะสุ่มเอาชิ้นแรกที่ physics engine คืนมา
-	# =====================================================
-
-	var best_item = null
-	var best_dist := INF
-
-	for r in result:
-		var item = r.collider.get_parent()
-		if item == null:
-			continue
-
-		var dist: float = item.global_position.distance_squared_to(mouse_pos)
-
-		if dist < best_dist:
-			best_dist = dist
-			best_item = item
-
-	if best_item:
-		print(best_item)
-
-	return best_item
+	return null

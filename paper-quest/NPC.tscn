@@ -7,16 +7,13 @@
 script = ExtResource("1_ll5ud")
 
 [node name="MaleBase" type="Sprite2D" parent="." unique_id=2062387533]
-z_index = 1
 texture = ExtResource("2_ll5ud")
 
 [node name="Cloth" type="Sprite2D" parent="." unique_id=1327325521]
-z_index = 1
 
 [node name="FrontHair" type="Sprite2D" parent="." unique_id=945437460]
-z_index = 1
 
 [node name="Eye" type="Sprite2D" parent="." unique_id=1546410976]
-z_index = 1
 
 [node name="BackHair" type="Sprite2D" parent="." unique_id=1389399712]
+z_index = -1

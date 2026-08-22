@@ -6,8 +6,6 @@ extends Node
 @onready var desk_point: Marker2D = $NPCDeskPoint
 @onready var exit_point: Marker2D = $NPCExitPoint
 @onready var npc_container: Node2D = $NPCContainer
-@onready var id_card = get_node_or_null("../ObjMananger/IDcard")
-@onready var quest_paper = get_node_or_null("../ObjMananger/QuestPaperSmall")
 
 var current_npc = null
 
@@ -18,10 +16,6 @@ func _ready() -> void:
 
 func spawn_npc() -> void:
 	if current_npc != null:
-		return
-
-	# ครบจำนวนลูกค้าของวันนี้แล้ว ไม่ต้องเรียกลูกค้าคนใหม่มาอีก
-	if DayManager.is_day_over():
 		return
 
 	current_npc = npc_scene.instantiate()
@@ -39,18 +33,6 @@ func spawn_npc() -> void:
 
 func _on_npc_arrived() -> void:
 	print("NPC arrived at desk")
-
-	# =====================================================
-	# ยืนรอแปปนึงก่อน ค่อยมีกระดาษ + บัตรโผล่มาบนโต๊ะ
-	# =====================================================
-
-	await get_tree().create_timer(0.6).timeout
-
-	if id_card:
-		id_card.reset_card()
-
-	if quest_paper:
-		quest_paper.reset_to_closed_with_new_quest()
 
 
 func finish_current_npc() -> void:

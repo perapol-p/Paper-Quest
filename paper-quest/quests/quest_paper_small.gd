@@ -18,8 +18,8 @@ const GuildFakeTextures: Array[Texture2D] = [
 ]
 
 ## ต้องลากไปเกินสัดส่วนนี้ของความกว้างจอ (0-1) ถึงจะกางออก / หุบกลับ
-## 0.32 ~= ขอบซ้ายของโต๊ะจริงในฉาก แค่ลากไปแตะขอบโต๊ะก็เปิดเลย
-@export_range(0.0, 1.0) var open_zone_x_ratio: float = 0.32
+## 0.5 = ครึ่งจอ ตรงกับเส้นแบ่งโต๊ะฝั่งขวา
+@export_range(0.0, 1.0) var open_zone_x_ratio: float = 0.5
 
 ## ขนาด sprite ตอนหุบ (ใบเล็ก) และตอนกางออก (ใบใหญ่)
 @export var closed_scale: Vector2 = Vector2(2.5, 2.5)
@@ -82,10 +82,6 @@ func _ready() -> void:
 	_apply_closed_visual()
 	_refresh_labels()
 
-	# ซ่อนไว้ก่อน จนกว่าจะมีลูกค้ามายืนที่โต๊ะ
-	# (ดู npc_manager.gd -> _on_npc_arrived)
-	visible = false
-
 	# ObjMananger (พ่อของ item ลากได้ทุกตัว) จะยิง signal นี้ตอนปล่อยเมาส์
 	var manager := get_parent()
 	if manager and manager.has_signal("item_released"):
@@ -127,14 +123,7 @@ func _expand() -> void:
 	state = State.EXPANDED
 	_apply_expanded_visual()
 	_refresh_labels()
-
-	# กางออกตรงจุดที่ปล่อยเมาส์เลย (position ปัจจุบันคือจุดที่ลากมาปล่อย)
-	# กันไม่ให้ใบใหญ่ล้นขอบจอ ถ้าปล่อยใกล้ขอบเกินไป
-	var half_size: Vector2 = expanded_shape.size * 0.5
-	position = Vector2(
-		clamp(position.x, half_size.x, screen_size.x - half_size.x),
-		clamp(position.y, half_size.y, screen_size.y - half_size.y)
-	)
+	position = Vector2(screen_size.x * ((1.0 + open_zone_x_ratio) * 0.5), screen_size.y * 0.5)
 
 
 func _close() -> void:
@@ -221,7 +210,7 @@ func submit_quest() -> Dictionary:
 	# ยังไม่ได้ปั้มตรา Approve/Denied เลย
 	if current_verdict == "":
 		return {
-			"text": "Stamp It First!",
+			"text": "ยังไม่ได้ปั้มตรา!",
 			"color": Color(0.541, 0.157, 0.145),
 		}
 
@@ -231,15 +220,13 @@ func submit_quest() -> Dictionary:
 
 	if correct:
 		return {
-			"text": "Success!",
+			"text": "ส่งเควสถูกต้อง!",
 			"color": Color(0.15, 0.5, 0.15),
-			"correct": true,
 		}
 	else:
 		return {
-			"text": "Failure!",
+			"text": "ส่งเควสผิด!",
 			"color": Color(0.7, 0.1, 0.1),
-			"correct": false,
 		}
 
 
@@ -261,16 +248,7 @@ func load_new_quest() -> void:
 
 
 ## เหมือน load_new_quest() แต่หุบกระดาษกลับเป็นใบเล็กที่ตำแหน่งเดิมด้วย
-## ใช้ตอนลูกค้าคนใหม่เดินมาถึงโต๊ะแล้ว (ดู npc_manager.gd -> _on_npc_arrived)
+## ใช้ตอนส่งเควสเสร็จแล้วรอเควสใหม่ (ผู้เล่นต้องลากไปเปิดตรวจเองอีกรอบ)
 func reset_to_closed_with_new_quest() -> void:
 	load_new_quest()
 	_close()
-	# มีเควสใหม่แล้ว -> โชว์กระดาษบนโต๊ะ
-	visible = true
-
-
-## หุบกระดาษกลับแล้วซ่อนไปเลย ไม่สุ่มเควสใหม่
-## ใช้ตอนส่งเควสเสร็จ (ลูกค้าเก่ายังเดินออกไม่ถึง ยังไม่ต้องสุ่มข้อมูลใหม่)
-func close_paper() -> void:
-	_close()
-	visible = false
