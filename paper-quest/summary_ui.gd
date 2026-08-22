@@ -1,11 +1,15 @@
 extends CanvasLayer
 
 ## UI สรุปผลตอนจบวัน โผล่มาตอนลูกค้าครบจำนวนของวันนี้แล้ว (ดู day_manager.gd)
+## ถ้ายังไม่ใช่วันสุดท้าย -> ปุ่มจะเป็น "วันต่อไป" ไปวันถัดไป (ลูกค้าจะเพิ่มขึ้น)
+## ถ้าเป็นวันสุดท้าย (วันที่ 5) -> โชว์ผลรวมทั้งเกมและ ending (ดี/กลาง/แย่) ปุ่มจะเป็น "เล่นใหม่"
 
 @onready var title_label: Label = $Panel/VBox/TitleLabel
 @onready var correct_label: Label = $Panel/VBox/CorrectLabel
 @onready var wrong_label: Label = $Panel/VBox/WrongLabel
 @onready var restart_button: Button = $Panel/VBox/RestartButton
+
+var _waiting_for_final_restart: bool = false
 
 
 func _ready() -> void:
@@ -14,14 +18,51 @@ func _ready() -> void:
 	DayManager.day_finished.connect(_on_day_finished)
 
 
-func _on_day_finished(correct: int, wrong: int, total: int) -> void:
-	title_label.text = "สรุปผลวันนี้ (ลูกค้า %d คน)" % total
-	correct_label.text = "ทำถูก: %d คน" % correct
-	wrong_label.text = "ทำผิด: %d คน" % wrong
+func _on_day_finished(correct: int, wrong: int, total: int, day: int, is_last_day: bool) -> void:
+	if is_last_day:
+		_show_final_ending()
+	else:
+		_show_day_summary(correct, wrong, total, day)
 
 	visible = true
 
 
+func _show_day_summary(correct: int, wrong: int, total: int, day: int) -> void:
+	_waiting_for_final_restart = false
+
+	title_label.text = "สรุปผลวันที่ %d (ลูกค้า %d คน)" % [day, total]
+	correct_label.text = "ทำถูก: %d คน" % correct
+	wrong_label.text = "ทำผิด: %d คน" % wrong
+	restart_button.text = "วันต่อไป"
+
+
+func _show_final_ending() -> void:
+	_waiting_for_final_restart = true
+
+	var accuracy: float = DayManager.get_total_accuracy()
+	var ending: String = DayManager.calculate_ending()
+
+	var ending_text: String
+	match ending:
+		"good":
+			ending_text = "Good End"
+		"normal":
+			ending_text = "Normal End"
+		_:
+			ending_text = "Bad End"
+
+	title_label.text = "จบเกม! (%s)" % ending_text
+	correct_label.text = "ทำถูกรวม: %d / %d คน" % [DayManager.total_correct, DayManager.total_customers]
+	wrong_label.text = "ความแม่นยำ: %.1f%%" % accuracy
+	restart_button.text = "เล่นใหม่"
+
+
 func _on_restart_pressed() -> void:
-	DayManager.start_new_day()
+	visible = false
+
+	if _waiting_for_final_restart:
+		DayManager.reset_game()
+	else:
+		DayManager.advance_day()
+
 	get_tree().reload_current_scene()

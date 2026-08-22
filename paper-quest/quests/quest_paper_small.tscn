@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" path="res://Assets/Picture/Items/Stamp/Guild.png" id="3_guildstamp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_papersmall"]
-size = Vector2(178, 48)
+size = Vector2(270, 112)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uj6oh"]
 size = Vector2(56, 29)
