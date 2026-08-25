@@ -64,6 +64,14 @@ var cloths = [
 	preload("res://Assets/Export/Characters/Cloth/Male_Ranger.png"),
 	preload("res://Assets/Export/Characters/Cloth/Male_Worrier.png")]
 
+var cloth_classes = [
+	"Mage",
+	"Ranger",
+	"Warrior"
+]
+
+var npc_class: String = ""
+
 var eyes = [
 	preload("res://Assets/Export/Characters/Eyes/Blue/MaleB_Eye1.png"),
 	preload("res://Assets/Export/Characters/Eyes/Blue/MaleB_Eye2.png"),
@@ -140,12 +148,20 @@ var hairs = [
 	}
 ]
 
-func random_npc():
-	cloth.texture = cloths.pick_random()
+func random_npc() -> void:
+	var index := randi_range(0, cloths.size() - 1)
+
+	cloth.texture = cloths[index]
+	npc_class = cloth_classes[index]
+
 	eye.texture = eyes.pick_random()
+
 	var select_hair = hairs.pick_random()
 	front_hair.texture = select_hair["front"]
 	back_hair.texture = select_hair["back"]
+
+func get_npc_class() -> String:
+	return npc_class
 
 func _ready() -> void:
 	random_npc()

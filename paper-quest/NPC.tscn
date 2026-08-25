@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bdvuswn3sa5vb" path="res://Assets/Export/Characters/Male_Base.png" id="2_ll5ud"]
 
 [node name="NPC" type="CharacterBody2D" unique_id=1256028127]
+z_index = 1
+scale = Vector2(2.2, 2.2)
 script = ExtResource("1_ll5ud")
 
 [node name="MaleBase" type="Sprite2D" parent="." unique_id=2062387533]

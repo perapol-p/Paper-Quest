@@ -47,7 +47,7 @@ func _on_npc_arrived() -> void:
 	await get_tree().create_timer(0.6).timeout
 
 	if id_card:
-		id_card.reset_card()
+		id_card.reset_card(current_npc.get_npc_class())
 
 	if quest_paper:
 		quest_paper.reset_to_closed_with_new_quest()
