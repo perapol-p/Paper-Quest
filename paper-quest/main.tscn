@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://dq2m8x5bell01" path="res://Assets/Export/Items/Big/Bell.png" id="17_bell_big"]
 [ext_resource type="Script" uid="uid://cvy41lb3bfvjk" path="res://date_ui.gd" id="21_getpj"]
 [ext_resource type="FontFile" uid="uid://cco3a1jfv4tn7" path="res://Assets/Fonts/EN_Pixel_Font.ttf" id="22_ryguw"]
+[ext_resource type="PackedScene" path="res://help_ui.tscn" id="23_helpui"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uj6oh"]
 size = Vector2(106, 33)
@@ -329,3 +330,5 @@ offset_bottom = 39.0
 [node name="DateLabel" type="Label" parent="DateUI/Control/VBoxContainer" unique_id=357037053]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("22_ryguw")
+
+[node name="HelpUI" parent="." instance=ExtResource("23_helpui")]

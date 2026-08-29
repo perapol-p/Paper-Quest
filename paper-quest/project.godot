@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Paper Quest"
-run/main_scene="res://main.tscn"
+run/main_scene="res://main_menu.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 QuestDatabase="*res://quests/quest_database.gd"
 DayManager="*res://day_manager.gd"
+
+[audio]
+
+buses/default_bus_layout="res://default_bus_layout.tres"
 
 [display]
 
