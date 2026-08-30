@@ -54,6 +54,13 @@ func _on_submit_pressed() -> void:
 	# ไม่โชว์ว่าถูกหรือผิดตอนนี้ ให้ไปดูสรุปรวมตอนจบวันแทน
 	result_label.text = ""
 
+	# เอฟเฟกต์ particle สี่เหลี่ยมสีทองตอนกดกระดิ่งส่งเควสสำเร็จ
+	Vfx.square_burst(
+		get_tree().current_scene,
+		submit_button.global_position,
+		Color(0.95, 0.8, 0.3)
+	)
+
 	# นับผลลูกค้าคนนี้ (ถูก/ผิด) เข้าสรุปของวัน
 	if result.has("correct"):
 		DayManager.register_result(result.correct)

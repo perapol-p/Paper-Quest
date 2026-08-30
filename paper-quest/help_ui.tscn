@@ -1,13 +1,10 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="Script" path="res://help_ui.gd" id="1_script"]
 [ext_resource type="FontFile" path="res://Assets/Fonts/TH_Pixel_Font.ttf" id="2_font"]
 [ext_resource type="Texture2D" path="res://Assets/Picture/Items/Stamp/Guild.png" id="3_guild_real"]
-[ext_resource type="Texture2D" path="res://Assets/Export/Items/Stamp/WGuild1.png" id="4_guild_fake1"]
-[ext_resource type="Texture2D" path="res://Assets/Export/Items/Stamp/WGuild2.png" id="5_guild_fake2"]
 [ext_resource type="Texture2D" path="res://Assets/Picture/Items/Stamp/Stamp_A.png" id="6_stamp_a"]
 [ext_resource type="Texture2D" path="res://Assets/Picture/Items/Stamp/Stamp_D.png" id="7_stamp_d"]
-[ext_resource type="Texture2D" path="res://Assets/Picture/Items/Big/ID_Card.png" id="8_idcard"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 bg_color = Color(0.09, 0.09, 0.1, 0.92)
@@ -60,10 +57,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -280.0
-offset_top = -160.0
-offset_right = 280.0
-offset_bottom = 160.0
+offset_left = -220.0
+offset_top = -130.0
+offset_right = 220.0
+offset_bottom = 130.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
@@ -102,43 +99,25 @@ size_flags_vertical = 3
 
 [node name="Content" type="VBoxContainer" parent="Overlay/Panel/Margin/VBox/Scroll"]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 12
 
 [node name="StepsLabel" type="Label" parent="Overlay/Panel/Margin/VBox/Scroll/Content"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9, 0.88, 0.85, 1)
 theme_override_font_sizes/font_size = 14
 autowrap_mode = 2
-text = "1. รอลูกค้ามายืนที่โต๊ะฝั่งซ้าย
-2. ลาก \"บัตรประจำตัว\" จากฝั่งซ้าย ไปวางบนโต๊ะฝั่งขวา เพื่อดูข้อมูลบัตร
-3. ลาก \"ใบเควส\" จากฝั่งซ้าย ไปวางบนโต๊ะฝั่งขวา เพื่อดูรายละเอียดเควส"
-
-[node name="CheckLabel" type="Label" parent="Overlay/Panel/Margin/VBox/Scroll/Content"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.95, 0.85, 0.55, 1)
-theme_override_font_sizes/font_size = 15
-text = "ต้องเช็คก่อนตัดสินใจ 3 อย่าง"
-
-[node name="CheckListLabel" type="Label" parent="Overlay/Panel/Margin/VBox/Scroll/Content"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.9, 0.88, 0.85, 1)
-theme_override_font_sizes/font_size = 14
-autowrap_mode = 2
-text = "• Rank บนบัตร ต้อง \"เท่ากับหรือสูงกว่า\" Rank ที่เควสต้องการ
-   (เรียงจากต่ำไปสูง: F < E < D < C < B < A < S)
-• วันหมดอายุบนบัตร ต้องยังไม่เลยวันที่ปัจจุบัน (ดูวันที่ปัจจุบันมุมล่างซ้ายของจอ)
-• ตรากิลด์บนใบเควส ต้องเป็นของจริง สังเกตรายละเอียดให้ดี ของปลอมจะเพี้ยนเล็กน้อย"
+text = "ลากบัตร/ใบเควสจากซ้าย มาวางที่โต๊ะขวา แล้วเช็ค 3 อย่าง: Rank พอไหม, บัตรหมดอายุยัง, ตราตรงกับตราจริงไหม"
 
 [node name="StampRow" type="HBoxContainer" parent="Overlay/Panel/Margin/VBox/Scroll/Content"]
 layout_mode = 2
 alignment = 1
-theme_override_constants/separation = 20
+theme_override_constants/separation = 40
 
 [node name="RealCol" type="VBoxContainer" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow"]
 layout_mode = 2
 
 [node name="RealImg" type="TextureRect" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow/RealCol"]
-custom_minimum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("3_guild_real")
 expand_mode = 5
@@ -151,98 +130,34 @@ theme_override_font_sizes/font_size = 12
 text = "ตราจริง"
 horizontal_alignment = 1
 
-[node name="Fake1Col" type="VBoxContainer" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow"]
+[node name="ApproveCol" type="VBoxContainer" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow"]
 layout_mode = 2
 
-[node name="Fake1Img" type="TextureRect" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow/Fake1Col"]
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-texture = ExtResource("4_guild_fake1")
-expand_mode = 5
-stretch_mode = 5
-
-[node name="Fake1Label" type="Label" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow/Fake1Col"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.9, 0.4, 0.4, 1)
-theme_override_font_sizes/font_size = 12
-text = "ตราปลอม"
-horizontal_alignment = 1
-
-[node name="Fake2Col" type="VBoxContainer" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow"]
-layout_mode = 2
-
-[node name="Fake2Img" type="TextureRect" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow/Fake2Col"]
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-texture = ExtResource("5_guild_fake2")
-expand_mode = 5
-stretch_mode = 5
-
-[node name="Fake2Label" type="Label" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow/Fake2Col"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.9, 0.4, 0.4, 1)
-theme_override_font_sizes/font_size = 12
-text = "ตราปลอม"
-horizontal_alignment = 1
-
-[node name="IDCardCol" type="VBoxContainer" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow"]
-layout_mode = 2
-
-[node name="IDCardImg" type="TextureRect" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow/IDCardCol"]
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-texture = ExtResource("8_idcard")
-expand_mode = 5
-stretch_mode = 5
-
-[node name="IDCardLabel" type="Label" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow/IDCardCol"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.8, 0.8, 0.85, 1)
-theme_override_font_sizes/font_size = 12
-text = "บัตรลูกค้า"
-horizontal_alignment = 1
-
-[node name="DecisionLabel" type="Label" parent="Overlay/Panel/Margin/VBox/Scroll/Content"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.9, 0.88, 0.85, 1)
-theme_override_font_sizes/font_size = 14
-autowrap_mode = 2
-text = "ผ่านครบทั้ง 3 ข้อ -> ปั๊ม APPROVE
-ไม่ผ่านข้อใดข้อหนึ่ง -> ปั๊ม DENIED"
-
-[node name="StampImgRow" type="HBoxContainer" parent="Overlay/Panel/Margin/VBox/Scroll/Content"]
-layout_mode = 2
-alignment = 1
-theme_override_constants/separation = 30
-
-[node name="ApproveCol" type="VBoxContainer" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampImgRow"]
-layout_mode = 2
-
-[node name="ApproveImg" type="TextureRect" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampImgRow/ApproveCol"]
-custom_minimum_size = Vector2(48, 48)
+[node name="ApproveImg" type="TextureRect" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow/ApproveCol"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("6_stamp_a")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="ApproveLabel" type="Label" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampImgRow/ApproveCol"]
+[node name="ApproveLabel" type="Label" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow/ApproveCol"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.4, 0.85, 0.4, 1)
 theme_override_font_sizes/font_size = 12
 text = "APPROVE"
 horizontal_alignment = 1
 
-[node name="DeniedCol" type="VBoxContainer" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampImgRow"]
+[node name="DeniedCol" type="VBoxContainer" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow"]
 layout_mode = 2
 
-[node name="DeniedImg" type="TextureRect" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampImgRow/DeniedCol"]
-custom_minimum_size = Vector2(48, 48)
+[node name="DeniedImg" type="TextureRect" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow/DeniedCol"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("7_stamp_d")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="DeniedLabel" type="Label" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampImgRow/DeniedCol"]
+[node name="DeniedLabel" type="Label" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow/DeniedCol"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9, 0.4, 0.4, 1)
 theme_override_font_sizes/font_size = 12
@@ -254,6 +169,4 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.9, 0.88, 0.85, 1)
 theme_override_font_sizes/font_size = 14
 autowrap_mode = 2
-text = "วิธีปั๊มตรา: คลิกซ้ายค้างที่ตรา แล้วลากไปวางตรงจุดปั๊มบนกระดาษ จากนั้นคลิกขวาตรงจุดนั้นอีกทีเพื่อปั๊มลงจริง
-
-ปั๊มเสร็จแล้ว กดปุ่มกระดิ่ง (มุมขวาล่างของจอ) เพื่อส่งเควส"
+text = "ลากตราไปวางบนจุดปั๊ม แล้วคลิกขวาเพื่อปั๊ม จากนั้นกดกระดิ่งเพื่อส่งเควส"

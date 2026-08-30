@@ -314,6 +314,14 @@ func spawn_approve_stamp() -> void:
 	paper.add_stamp(stamp, "approve")
 
 
+	# เอฟเฟกต์ particle สี่เหลี่ยมสีเขียวตอนปั้ม Approve สำเร็จ
+	Vfx.square_burst(
+		get_tree().current_scene,
+		stamp.global_position,
+		Color(0.4, 0.9, 0.4)
+	)
+
+
 	print("Spawn Approve Stamp")
 
 
@@ -343,6 +351,14 @@ func spawn_denied_stamp() -> void:
 
 	# ส่งให้ Paper จัดการ Stamp (verdict = denied เพื่อตรวจว่าตรากิลด์จริงหรือปลอม)
 	paper.add_stamp(stamp, "denied")
+
+
+	# เอฟเฟกต์ particle สี่เหลี่ยมสีแดงตอนปั้ม Denied สำเร็จ
+	Vfx.square_burst(
+		get_tree().current_scene,
+		stamp.global_position,
+		Color(0.9, 0.3, 0.3)
+	)
 
 
 	print("Spawn Denied Stamp")
