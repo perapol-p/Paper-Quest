@@ -1,0 +1,8 @@
+Main Menu : "Continue Life"
+In Game 1 : "Morning"
+In Game 2 : "Evening"
+Good End : "Starting Out Waltz Vivace"
+Normal End : "Starting Out Waltz Allegretto"
+Bad End : "Joey's Formal Waltz - Scented" 
+
+All song by Kevin MacLeod
