@@ -103,7 +103,6 @@ z_index = 11
 position = Vector2(184, 590)
 id_card = NodePath("../IDcard")
 date_ui = NodePath("../../DateUI")
-metadata/_edit_lock_ = true
 
 [node name="StampManager" type="Node2D" parent="ObjMananger" unique_id=821298446]
 script = ExtResource("8_4c57u")
