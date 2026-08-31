@@ -23,7 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://dq2m8x5bell01" path="res://Assets/Export/Items/Big/Bell.png" id="17_bell_big"]
 [ext_resource type="Script" uid="uid://cvy41lb3bfvjk" path="res://date_ui.gd" id="21_getpj"]
 [ext_resource type="FontFile" uid="uid://cco3a1jfv4tn7" path="res://Assets/Fonts/EN_Pixel_Font.ttf" id="22_ryguw"]
-[ext_resource type="PackedScene" path="res://help_ui.tscn" id="23_helpui"]
+[ext_resource type="PackedScene" uid="uid://d37yxq5qa6jb6" path="res://help_ui.tscn" id="23_helpui"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uj6oh"]
 size = Vector2(106, 33)
@@ -107,64 +107,59 @@ metadata/_edit_lock_ = true
 
 [node name="StampManager" type="Node2D" parent="ObjMananger" unique_id=821298446]
 script = ExtResource("8_4c57u")
-metadata/_edit_lock_ = true
 
 [node name="StampBases" type="Node2D" parent="ObjMananger/StampManager" unique_id=190337953]
-metadata/_edit_lock_ = true
 
 [node name="StampDBase" type="Node2D" parent="ObjMananger/StampManager/StampBases" unique_id=271302100]
-position = Vector2(419.965, 624.99)
-metadata/_edit_lock_ = true
+position = Vector2(731, 678)
 
 [node name="Sprite2D" type="Sprite2D" parent="ObjMananger/StampManager/StampBases/StampDBase" unique_id=56294941]
 z_index = -1
 texture = ExtResource("10_dg77c")
 region_enabled = true
 region_rect = Rect2(131, 34, 110, 36)
-metadata/_edit_lock_ = true
 
 [node name="StampABase" type="Node2D" parent="ObjMananger/StampManager/StampBases" unique_id=80963789]
-position = Vector2(418.535, 508)
-metadata/_edit_lock_ = true
+position = Vector2(455, 709)
 
 [node name="Sprite2D" type="Sprite2D" parent="ObjMananger/StampManager/StampBases/StampABase" unique_id=755435277]
+visible = false
 z_index = -1
 position = Vector2(0, -2)
 texture = ExtResource("10_dg77c")
 region_enabled = true
 region_rect = Rect2(16, 34, 110, 36)
-metadata/_edit_lock_ = true
 
 [node name="StampD" type="Node2D" parent="ObjMananger/StampManager" unique_id=1634686490]
 z_index = 2
-position = Vector2(419.965, 624.99)
-metadata/_edit_lock_ = true
+position = Vector2(721, 614)
 
 [node name="Sprite2D" type="Sprite2D" parent="ObjMananger/StampManager/StampD" unique_id=579423958]
+visible = false
 texture = ExtResource("9_4c57u")
-metadata/_edit_lock_ = true
 
 [node name="Area2D" type="Area2D" parent="ObjMananger/StampManager/StampD" unique_id=110718149]
-metadata/_edit_lock_ = true
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObjMananger/StampManager/StampD/Area2D" unique_id=361818922]
+visible = false
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_uj6oh")
-metadata/_edit_lock_ = true
 
 [node name="StampA" type="Node2D" parent="ObjMananger/StampManager" unique_id=966396235]
+visible = false
 z_index = 2
-position = Vector2(418.535, 507)
-metadata/_edit_lock_ = true
+position = Vector2(565, 595)
 
 [node name="Sprite2D" type="Sprite2D" parent="ObjMananger/StampManager/StampA" unique_id=1452018324]
+visible = false
 texture = ExtResource("8_kek77")
-metadata/_edit_lock_ = true
 
 [node name="Area2D" type="Area2D" parent="ObjMananger/StampManager/StampA" unique_id=936663510]
-metadata/_edit_lock_ = true
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObjMananger/StampManager/StampA/Area2D" unique_id=60755954]
+visible = false
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_uj6oh")
 

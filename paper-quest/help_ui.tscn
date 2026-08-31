@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene format=3 uid="uid://d37yxq5qa6jb6"]
 
-[ext_resource type="Script" path="res://help_ui.gd" id="1_script"]
-[ext_resource type="FontFile" path="res://Assets/Fonts/TH_Pixel_Font.ttf" id="2_font"]
-[ext_resource type="Texture2D" path="res://Assets/Picture/Items/Stamp/Guild.png" id="3_guild_real"]
-[ext_resource type="Texture2D" path="res://Assets/Picture/Items/Stamp/Stamp_A.png" id="6_stamp_a"]
-[ext_resource type="Texture2D" path="res://Assets/Picture/Items/Stamp/Stamp_D.png" id="7_stamp_d"]
+[ext_resource type="Script" uid="uid://dmv6eu6ansa28" path="res://help_ui.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://vrfhfi8hwtia" path="res://Assets/Fonts/TH_Pixel_Font.ttf" id="2_font"]
+[ext_resource type="Texture2D" uid="uid://dlg7wf41ebu8d" path="res://Assets/Picture/Items/Stamp/Guild.png" id="3_guild_real"]
+[ext_resource type="FontFile" uid="uid://cco3a1jfv4tn7" path="res://Assets/Fonts/EN_Pixel_Font.ttf" id="4_jwfmw"]
+[ext_resource type="Texture2D" uid="uid://b5fucwic6pcws" path="res://Assets/Picture/Items/Stamp/Stamp_A.png" id="6_stamp_a"]
+[ext_resource type="Texture2D" uid="uid://gqdaonujebi7" path="res://Assets/Picture/Items/Stamp/Stamp_D.png" id="7_stamp_d"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 bg_color = Color(0.09, 0.09, 0.1, 0.92)
@@ -18,11 +19,11 @@ corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
-[node name="HelpUI" type="CanvasLayer"]
+[node name="HelpUI" type="CanvasLayer" unique_id=1852728232]
 layer = 20
 script = ExtResource("1_script")
 
-[node name="HelpButton" type="Button" parent="."]
+[node name="HelpButton" type="Button" parent="." unique_id=991915123]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -34,7 +35,8 @@ grow_horizontal = 0
 theme_override_font_sizes/font_size = 22
 text = "?"
 
-[node name="Overlay" type="Control" parent="."]
+[node name="Overlay" type="Control" parent="." unique_id=402928145]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -42,8 +44,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="Dim" type="ColorRect" parent="Overlay"]
-anchors_preset = 15
+[node name="Dim" type="ColorRect" parent="Overlay" unique_id=51884349]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -51,35 +53,35 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0.65)
 
-[node name="Panel" type="PanelContainer" parent="Overlay"]
-anchors_preset = 8
+[node name="Panel" type="PanelContainer" parent="Overlay" unique_id=52779382]
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -220.0
 offset_top = -130.0
-offset_right = 220.0
+offset_right = 219.99878
 offset_bottom = 130.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
-[node name="Margin" type="MarginContainer" parent="Overlay/Panel"]
+[node name="Margin" type="MarginContainer" parent="Overlay/Panel" unique_id=1864611279]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 12
 
-[node name="VBox" type="VBoxContainer" parent="Overlay/Panel/Margin"]
+[node name="VBox" type="VBoxContainer" parent="Overlay/Panel/Margin" unique_id=1434230619]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="TopBar" type="HBoxContainer" parent="Overlay/Panel/Margin/VBox"]
+[node name="TopBar" type="HBoxContainer" parent="Overlay/Panel/Margin/VBox" unique_id=616423374]
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="Overlay/Panel/Margin/VBox/TopBar"]
+[node name="TitleLabel" type="Label" parent="Overlay/Panel/Margin/VBox/TopBar" unique_id=282121442]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.95, 0.9, 0.75, 1)
@@ -87,86 +89,91 @@ theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 20
 text = "วิธีเล่น"
 
-[node name="CloseButton" type="Button" parent="Overlay/Panel/Margin/VBox/TopBar"]
+[node name="CloseButton" type="Button" parent="Overlay/Panel/Margin/VBox/TopBar" unique_id=1474357326]
 custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "X"
 
-[node name="Scroll" type="ScrollContainer" parent="Overlay/Panel/Margin/VBox"]
+[node name="Scroll" type="ScrollContainer" parent="Overlay/Panel/Margin/VBox" unique_id=1173875133]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Content" type="VBoxContainer" parent="Overlay/Panel/Margin/VBox/Scroll"]
+[node name="Content" type="VBoxContainer" parent="Overlay/Panel/Margin/VBox/Scroll" unique_id=988411271]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="StepsLabel" type="Label" parent="Overlay/Panel/Margin/VBox/Scroll/Content"]
+[node name="StepsLabel" type="Label" parent="Overlay/Panel/Margin/VBox/Scroll/Content" unique_id=966511574]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9, 0.88, 0.85, 1)
+theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 14
-autowrap_mode = 2
 text = "ลากบัตร/ใบเควสจากซ้าย มาวางที่โต๊ะขวา แล้วเช็ค 3 อย่าง: Rank พอไหม, บัตรหมดอายุยัง, ตราตรงกับตราจริงไหม"
+autowrap_mode = 2
 
-[node name="StampRow" type="HBoxContainer" parent="Overlay/Panel/Margin/VBox/Scroll/Content"]
+[node name="StampRow" type="HBoxContainer" parent="Overlay/Panel/Margin/VBox/Scroll/Content" unique_id=926343460]
 layout_mode = 2
-alignment = 1
 theme_override_constants/separation = 40
+alignment = 1
 
-[node name="RealCol" type="VBoxContainer" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow"]
+[node name="RealCol" type="VBoxContainer" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow" unique_id=1380497942]
 layout_mode = 2
 
-[node name="RealImg" type="TextureRect" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow/RealCol"]
+[node name="RealImg" type="TextureRect" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow/RealCol" unique_id=633475813]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("3_guild_real")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="RealLabel" type="Label" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow/RealCol"]
+[node name="RealLabel" type="Label" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow/RealCol" unique_id=384463978]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.4, 0.85, 0.4, 1)
+theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 12
 text = "ตราจริง"
 horizontal_alignment = 1
 
-[node name="ApproveCol" type="VBoxContainer" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow"]
+[node name="ApproveCol" type="VBoxContainer" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow" unique_id=681700177]
 layout_mode = 2
 
-[node name="ApproveImg" type="TextureRect" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow/ApproveCol"]
+[node name="ApproveImg" type="TextureRect" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow/ApproveCol" unique_id=701212793]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("6_stamp_a")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="ApproveLabel" type="Label" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow/ApproveCol"]
+[node name="ApproveLabel" type="Label" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow/ApproveCol" unique_id=2046508535]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.4, 0.85, 0.4, 1)
+theme_override_fonts/font = ExtResource("4_jwfmw")
 theme_override_font_sizes/font_size = 12
 text = "APPROVE"
 horizontal_alignment = 1
 
-[node name="DeniedCol" type="VBoxContainer" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow"]
+[node name="DeniedCol" type="VBoxContainer" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow" unique_id=1287997856]
 layout_mode = 2
 
-[node name="DeniedImg" type="TextureRect" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow/DeniedCol"]
+[node name="DeniedImg" type="TextureRect" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow/DeniedCol" unique_id=1247962430]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("7_stamp_d")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="DeniedLabel" type="Label" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow/DeniedCol"]
+[node name="DeniedLabel" type="Label" parent="Overlay/Panel/Margin/VBox/Scroll/Content/StampRow/DeniedCol" unique_id=1853904118]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9, 0.4, 0.4, 1)
+theme_override_fonts/font = ExtResource("4_jwfmw")
 theme_override_font_sizes/font_size = 12
 text = "DENIED"
 horizontal_alignment = 1
 
-[node name="HowToStampLabel" type="Label" parent="Overlay/Panel/Margin/VBox/Scroll/Content"]
+[node name="HowToStampLabel" type="Label" parent="Overlay/Panel/Margin/VBox/Scroll/Content" unique_id=29448890]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9, 0.88, 0.85, 1)
+theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 14
-autowrap_mode = 2
 text = "ลากตราไปวางบนจุดปั๊ม แล้วคลิกขวาเพื่อปั๊ม จากนั้นกดกระดิ่งเพื่อส่งเควส"
+autowrap_mode = 2
