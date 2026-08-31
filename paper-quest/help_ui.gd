@@ -14,6 +14,17 @@ func _ready() -> void:
 func _toggle_help() -> void:
 	overlay.visible = not overlay.visible
 
+	# ถ้าเพิ่งเปิด Help ขึ้นมา ให้เช็คว่ามีการลากตราค้างอยู่หรือเปล่า
+	# (เผื่อผู้เล่นกดปุ่ม Help ขณะกำลังลากตราพอดี) แล้วบังคับดีดกลับฐานทันที
+	if overlay.visible:
+		_cancel_any_active_stamp_drag()
+
+
+func _cancel_any_active_stamp_drag() -> void:
+	var stamp_manager := get_tree().get_first_node_in_group("stamp_manager")
+	if stamp_manager != null and stamp_manager.has_method("cancel_drag"):
+		stamp_manager.cancel_drag()
+
 
 func _close_help() -> void:
 	overlay.visible = false

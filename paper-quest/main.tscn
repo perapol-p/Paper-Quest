@@ -24,6 +24,7 @@
 [ext_resource type="Script" uid="uid://cvy41lb3bfvjk" path="res://date_ui.gd" id="21_getpj"]
 [ext_resource type="FontFile" uid="uid://cco3a1jfv4tn7" path="res://Assets/Fonts/EN_Pixel_Font.ttf" id="22_ryguw"]
 [ext_resource type="PackedScene" uid="uid://d37yxq5qa6jb6" path="res://help_ui.tscn" id="23_helpui"]
+[ext_resource type="PackedScene" path="res://pause_ui.tscn" id="24_pauseui"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uj6oh"]
 size = Vector2(106, 33)
@@ -318,3 +319,5 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("22_ryguw")
 
 [node name="HelpUI" parent="." unique_id=256275235 instance=ExtResource("23_helpui")]
+
+[node name="PauseUI" parent="." instance=ExtResource("24_pauseui")]

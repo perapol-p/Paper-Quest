@@ -10,12 +10,26 @@ extends Control
 const MUSIC_BUS := "Music"
 const SFX_BUS := "SFX"
 
+## true ถ้าเข้าหน้านี้มาจากการกดปุ่ม Pause ระหว่างเล่น (มีเกมค้างอยู่)
+## -> โชว์ "เล่นต่อ" / "ออกเกม" แทน "PLAY" / "QUIT" และไม่รีเซ็ตเกมตอนเล่นต่อ
+var _resuming: bool = false
+
 func _ready() -> void:
 	_setup_slider(music_slider, MUSIC_BUS)
 	_setup_slider(sfx_slider, SFX_BUS)
 
 	play_button.pressed.connect(_on_play_pressed)
 	quit_button.pressed.connect(_on_quit_pressed)
+
+	_resuming = PauseManager.is_paused_menu
+	PauseManager.is_paused_menu = false
+
+	if _resuming:
+		play_button.text = "CONTINUE"
+		quit_button.text = "QUIT"
+	else:
+		play_button.text = "PLAY"
+		quit_button.text = "QUIT"
 	
 	MusicManager.stop_music()
 	MusicManager.play_menu_music()
@@ -44,7 +58,8 @@ func _setup_slider(slider: HSlider, bus_name: String) -> void:
 
 func _on_play_pressed() -> void:
 	get_tree().change_scene_to_file(game_scene_path)
-	DayManager.reset_game()
+	if not _resuming:
+		DayManager.reset_game()
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

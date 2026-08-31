@@ -54,7 +54,37 @@ func _ready() -> void:
 	stamp_a_area.input_event.connect(_on_stamp_a_input)
 	stamp_d_area.input_event.connect(_on_stamp_d_input)
 
+	# เข้ากลุ่มไว้ให้ UI อื่น (เช่น HelpUI) หาเจอและสั่งยกเลิกการลากได้
+	add_to_group("stamp_manager")
+
 	print("Stamp Manager Ready")
+
+
+# =========================================================
+# ยกเลิกการลาก (เรียกจากภายนอก เช่น ตอนเปิด Help UI)
+#
+# ป้องกันบัค: ถ้าผู้เล่นกำลังลากตราอยู่พอดีตอนกด Help
+# แล้วสถานะ dragging/mouse_was_pressed หลุด sync กัน
+# ทำให้ตราค้างไม่กลับฐาน จึงบังคับดีดกลับฐานทันทีตรงนี้
+# =========================================================
+
+func cancel_drag() -> void:
+
+	if not dragging or selected_stamp == null:
+		return
+
+	print("ยกเลิกการลาก (ถูกขัดจังหวะ) -> ดีดตรากลับฐาน")
+
+	var stamp_to_return := selected_stamp
+
+	dragging = false
+	selected_stamp = null
+	mouse_was_pressed = false
+
+	if stamp_to_return == stamp_a:
+		return_stamp_to_base(stamp_a, stamp_a_base)
+	elif stamp_to_return == stamp_d:
+		return_stamp_to_base(stamp_d, stamp_d_base)
 
 
 # =========================================================
