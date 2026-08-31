@@ -28,6 +28,7 @@ theme_override_fonts/font = ExtResource("3_rti5q")
 text = "Good Ending : Employee of the Month"
 
 [node name="BadEndScence" type="Node2D" parent="." unique_id=1886910408]
+visible = false
 
 [node name="BadEnd" type="Sprite2D" parent="BadEndScence" unique_id=1811364643]
 position = Vector2(-7.000061, 42)
@@ -45,6 +46,7 @@ text = "Bad Ending:You're Fired
 "
 
 [node name="NormalEndScence" type="Node2D" parent="." unique_id=5627578]
+visible = false
 
 [node name="NormalEnd" type="Sprite2D" parent="NormalEndScence" unique_id=1200855847]
 position = Vector2(-7.5, 44.5)

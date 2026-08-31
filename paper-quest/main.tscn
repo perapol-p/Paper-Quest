@@ -110,7 +110,7 @@ script = ExtResource("8_4c57u")
 [node name="StampBases" type="Node2D" parent="ObjMananger/StampManager" unique_id=190337953]
 
 [node name="StampDBase" type="Node2D" parent="ObjMananger/StampManager/StampBases" unique_id=271302100]
-position = Vector2(731, 678)
+position = Vector2(832, 611)
 
 [node name="Sprite2D" type="Sprite2D" parent="ObjMananger/StampManager/StampBases/StampDBase" unique_id=56294941]
 z_index = -1
@@ -119,10 +119,9 @@ region_enabled = true
 region_rect = Rect2(131, 34, 110, 36)
 
 [node name="StampABase" type="Node2D" parent="ObjMananger/StampManager/StampBases" unique_id=80963789]
-position = Vector2(455, 709)
+position = Vector2(685, 611)
 
 [node name="Sprite2D" type="Sprite2D" parent="ObjMananger/StampManager/StampBases/StampABase" unique_id=755435277]
-visible = false
 z_index = -1
 position = Vector2(0, -2)
 texture = ExtResource("10_dg77c")
@@ -131,34 +130,27 @@ region_rect = Rect2(16, 34, 110, 36)
 
 [node name="StampD" type="Node2D" parent="ObjMananger/StampManager" unique_id=1634686490]
 z_index = 2
-position = Vector2(721, 614)
+position = Vector2(832, 611)
 
 [node name="Sprite2D" type="Sprite2D" parent="ObjMananger/StampManager/StampD" unique_id=579423958]
-visible = false
 texture = ExtResource("9_4c57u")
 
 [node name="Area2D" type="Area2D" parent="ObjMananger/StampManager/StampD" unique_id=110718149]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObjMananger/StampManager/StampD/Area2D" unique_id=361818922]
-visible = false
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_uj6oh")
 
 [node name="StampA" type="Node2D" parent="ObjMananger/StampManager" unique_id=966396235]
-visible = false
 z_index = 2
-position = Vector2(565, 595)
+position = Vector2(685, 611)
 
 [node name="Sprite2D" type="Sprite2D" parent="ObjMananger/StampManager/StampA" unique_id=1452018324]
-visible = false
 texture = ExtResource("8_kek77")
 
 [node name="Area2D" type="Area2D" parent="ObjMananger/StampManager/StampA" unique_id=936663510]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObjMananger/StampManager/StampA/Area2D" unique_id=60755954]
-visible = false
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_uj6oh")
 
