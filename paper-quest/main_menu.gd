@@ -6,6 +6,10 @@ extends Control
 @onready var sfx_slider: HSlider = $MenuPanel/VBox/SoundRow/SoundSlider
 @onready var play_button: Button = $MenuPanel/VBox/PlayButton
 @onready var quit_button: Button = $MenuPanel/VBox/QuitButton
+@onready var credits_button: Button = $MenuPanel/VBox/CreditsButton
+
+@onready var credits_overlay: Control = $CreditsOverlay
+@onready var credits_close_button: Button = $CreditsOverlay/Panel/Margin/VBox/TopBar/CloseButton
 
 const MUSIC_BUS := "Music"
 const SFX_BUS := "SFX"
@@ -20,6 +24,11 @@ func _ready() -> void:
 
 	play_button.pressed.connect(_on_play_pressed)
 	quit_button.pressed.connect(_on_quit_pressed)
+
+	credits_overlay.visible = false
+	credits_button.pressed.connect(_toggle_credits)
+	credits_close_button.pressed.connect(_close_credits)
+	credits_overlay.gui_input.connect(_on_credits_overlay_input)
 
 	_resuming = PauseManager.is_paused_menu
 	PauseManager.is_paused_menu = false
@@ -63,3 +72,18 @@ func _on_play_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+
+func _toggle_credits() -> void:
+	credits_overlay.visible = not credits_overlay.visible
+
+
+func _close_credits() -> void:
+	credits_overlay.visible = false
+
+
+## ปิดหน้าต่างถ้าคลิกที่พื้นดำรอบนอกกรอบ (ไม่ใช่ในกรอบ Panel)
+func _on_credits_overlay_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		credits_overlay.accept_event()
+		_close_credits()
