@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d2vyki72sqir5" path="res://ending_scence.gd" id="1_yu63s"]
 [ext_resource type="Texture2D" uid="uid://dgnaweu5qjges" path="res://Assets/Export/BG/Ending/GoodEnd.png" id="2_rti5q"]
+[ext_resource type="FontFile" uid="uid://cco3a1jfv4tn7" path="res://Assets/Fonts/EN_Pixel_Font.ttf" id="3_rti5q"]
 [ext_resource type="Texture2D" uid="uid://l22mlhlo77r" path="res://Assets/Export/BG/Ending/BadEnd.png" id="3_u2fll"]
 [ext_resource type="Texture2D" uid="uid://b6bntoosfkn3h" path="res://Assets/Export/BG/Ending/NormalEnd.png" id="4_lhpqg"]
 
@@ -10,25 +11,23 @@ position = Vector2(584, 281)
 script = ExtResource("1_yu63s")
 
 [node name="GoodEndScence" type="Node2D" parent="." unique_id=1841571190]
-visible = false
 position = Vector2(-585, -285)
 
 [node name="GoodEnd" type="Sprite2D" parent="GoodEndScence" unique_id=1816074423]
-visible = false
 position = Vector2(578, 326)
 scale = Vector2(1.803125, 1.8055555)
 texture = ExtResource("2_rti5q")
 
 [node name="Label" type="Label" parent="GoodEndScence" unique_id=2134604473]
 z_index = 10
-offset_left = 544.0
-offset_top = 507.0
-offset_right = 628.0
-offset_bottom = 535.0
-text = "Good End"
+offset_left = 420.0
+offset_top = 506.0
+offset_right = 749.0
+offset_bottom = 529.0
+theme_override_fonts/font = ExtResource("3_rti5q")
+text = "Good Ending : Employee of the Month"
 
 [node name="BadEndScence" type="Node2D" parent="." unique_id=1886910408]
-visible = false
 
 [node name="BadEnd" type="Sprite2D" parent="BadEndScence" unique_id=1811364643]
 position = Vector2(-7.000061, 42)
@@ -37,11 +36,12 @@ texture = ExtResource("3_u2fll")
 
 [node name="Label" type="Label" parent="BadEndScence" unique_id=1688161450]
 z_index = 10
-offset_left = -71.0
-offset_top = 239.0
-offset_right = 102.0
-offset_bottom = 310.0
-text = "Bad End
+offset_left = -111.0
+offset_top = 232.0
+offset_right = 105.0
+offset_bottom = 303.0
+theme_override_fonts/font = ExtResource("3_rti5q")
+text = "Bad Ending:You're Fired
 "
 
 [node name="NormalEndScence" type="Node2D" parent="." unique_id=5627578]
@@ -53,11 +53,12 @@ texture = ExtResource("4_lhpqg")
 
 [node name="Label" type="Label" parent="NormalEndScence" unique_id=1136251857]
 z_index = 10
-offset_left = -56.0
-offset_top = 231.0
-offset_right = 61.0
-offset_bottom = 259.0
-text = "Normal End"
+offset_left = -185.0
+offset_top = 224.0
+offset_right = 190.0
+offset_bottom = 252.0
+theme_override_fonts/font = ExtResource("3_rti5q")
+text = "Normal Ending:Another Day,Another Dollar"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1184329766]
 
@@ -66,6 +67,7 @@ offset_left = 1014.0
 offset_top = 576.0
 offset_right = 1138.0
 offset_bottom = 633.0
+theme_override_fonts/font = ExtResource("3_rti5q")
 text = "Main Menu"
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_return_main_button_pressed"]

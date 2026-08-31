@@ -331,4 +331,4 @@ offset_bottom = 39.0
 layout_mode = 2
 theme_override_fonts/font = ExtResource("22_ryguw")
 
-[node name="HelpUI" parent="." instance=ExtResource("23_helpui")]
+[node name="HelpUI" parent="." unique_id=256275235 instance=ExtResource("23_helpui")]

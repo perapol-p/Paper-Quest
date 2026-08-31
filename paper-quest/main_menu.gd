@@ -16,6 +16,10 @@ func _ready() -> void:
 
 	play_button.pressed.connect(_on_play_pressed)
 	quit_button.pressed.connect(_on_quit_pressed)
+	
+	MusicManager.stop_music()
+	MusicManager.play_menu_music()
+ 
 
 
 func _setup_slider(slider: HSlider, bus_name: String) -> void:

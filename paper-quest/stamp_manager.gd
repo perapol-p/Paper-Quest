@@ -103,6 +103,7 @@ func _on_stamp_a_input(
 			print("คลิกขวา Approve")
 
 			stamp_a_pressed()
+			SfxManager.play_stamp_sfx()
 
 
 # =========================================================
@@ -151,6 +152,7 @@ func _on_stamp_d_input(
 			print("คลิกขวา Denied")
 
 			stamp_d_pressed()
+			SfxManager.play_stamp_sfx()
 
 
 # =========================================================

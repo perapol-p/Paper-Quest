@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ckpxftpmkhl8y"]
+
+[ext_resource type="Script" uid="uid://dbn2ivlke0jxi" path="res://sfx_manager.gd" id="1_idf7k"]
+
+[node name="SfxManager" type="Node2D" unique_id=211555717]
+script = ExtResource("1_idf7k")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=910008737]
+volume_db = 20.0
+bus = &"SFX"

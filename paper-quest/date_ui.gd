@@ -4,6 +4,7 @@ extends CanvasLayer
 
 
 func _ready() -> void:
+	MusicManager.play_game_music()
 	update_date()
 
 

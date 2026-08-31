@@ -60,6 +60,7 @@ func _on_submit_pressed() -> void:
 		submit_button.global_position,
 		Color(0.95, 0.8, 0.3)
 	)
+	SfxManager.play_bell_sfx()
 
 	# นับผลลูกค้าคนนี้ (ถูก/ผิด) เข้าสรุปของวัน
 	if result.has("correct"):

@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 QuestDatabase="*res://quests/quest_database.gd"
 DayManager="*res://day_manager.gd"
+MusicManager="*uid://brdlrmsql77j5"
+SfxManager="*uid://ckpxftpmkhl8y"
 
 [display]
 

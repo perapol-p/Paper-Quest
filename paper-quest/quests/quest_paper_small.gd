@@ -122,8 +122,10 @@ func _on_item_released(item: Node) -> void:
 
 	if state == State.CLOSED and past_line:
 		_expand()
+		SfxManager.play_quest_open()
 	elif state == State.EXPANDED and not past_line:
 		_close()
+		SfxManager.play_quest_close()
 
 
 func _expand() -> void:

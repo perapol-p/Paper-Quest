@@ -380,7 +380,7 @@ func _expand() -> void:
 	state = State.EXPANDED
 
 	_apply_expanded_visual()
-
+	SfxManager.play_id_slide()
 
 	# =================================================
 	# กางออกตรงจุดที่ปล่อยเมาส์
@@ -411,7 +411,7 @@ func _close() -> void:
 	state = State.CLOSED
 
 	_apply_closed_visual()
-
+	SfxManager.play_id_slide()
 
 	# =================================================
 	# กลับตำแหน่งเดิม
