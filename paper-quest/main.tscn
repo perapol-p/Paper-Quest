@@ -129,7 +129,7 @@ region_enabled = true
 region_rect = Rect2(16, 34, 110, 36)
 
 [node name="StampD" type="Node2D" parent="ObjMananger/StampManager" unique_id=1634686490]
-z_index = 2
+z_index = 20
 position = Vector2(832, 611)
 
 [node name="Sprite2D" type="Sprite2D" parent="ObjMananger/StampManager/StampD" unique_id=579423958]
@@ -142,7 +142,7 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_uj6oh")
 
 [node name="StampA" type="Node2D" parent="ObjMananger/StampManager" unique_id=966396235]
-z_index = 2
+z_index = 20
 position = Vector2(685, 611)
 
 [node name="Sprite2D" type="Sprite2D" parent="ObjMananger/StampManager/StampA" unique_id=1452018324]
