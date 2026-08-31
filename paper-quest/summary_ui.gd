@@ -54,15 +54,14 @@ func _show_final_ending() -> void:
 	title_label.text = "จบเกม! (%s)" % ending_text
 	correct_label.text = "ทำถูกรวม: %d / %d คน" % [DayManager.total_correct, DayManager.total_customers]
 	wrong_label.text = "ความแม่นยำ: %.1f%%" % accuracy
-	restart_button.text = "เล่นใหม่"
+	restart_button.text = "สรุป"
 
 
 func _on_restart_pressed() -> void:
 	visible = false
 
 	if _waiting_for_final_restart:
-		DayManager.reset_game()
+		get_tree().change_scene_to_file("res://ending_scence.tscn")
 	else:
 		DayManager.advance_day()
-
-	get_tree().reload_current_scene()
+		get_tree().reload_current_scene()

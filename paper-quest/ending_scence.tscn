@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://b31i3ggw46852"]
+
+[ext_resource type="Script" uid="uid://d2vyki72sqir5" path="res://ending_scence.gd" id="1_yu63s"]
+[ext_resource type="Texture2D" uid="uid://dgnaweu5qjges" path="res://Assets/Export/BG/Ending/GoodEnd.png" id="2_rti5q"]
+[ext_resource type="Texture2D" uid="uid://l22mlhlo77r" path="res://Assets/Export/BG/Ending/BadEnd.png" id="3_u2fll"]
+[ext_resource type="Texture2D" uid="uid://b6bntoosfkn3h" path="res://Assets/Export/BG/Ending/NormalEnd.png" id="4_lhpqg"]
+
+[node name="EndingScence" type="Node2D" unique_id=1586106472]
+position = Vector2(584, 281)
+script = ExtResource("1_yu63s")
+
+[node name="GoodEndScence" type="Node2D" parent="." unique_id=1841571190]
+visible = false
+position = Vector2(-585, -285)
+
+[node name="GoodEnd" type="Sprite2D" parent="GoodEndScence" unique_id=1816074423]
+visible = false
+position = Vector2(578, 326)
+scale = Vector2(1.803125, 1.8055555)
+texture = ExtResource("2_rti5q")
+
+[node name="Label" type="Label" parent="GoodEndScence" unique_id=2134604473]
+z_index = 10
+offset_left = 544.0
+offset_top = 507.0
+offset_right = 628.0
+offset_bottom = 535.0
+text = "Good End"
+
+[node name="BadEndScence" type="Node2D" parent="." unique_id=1886910408]
+visible = false
+
+[node name="BadEnd" type="Sprite2D" parent="BadEndScence" unique_id=1811364643]
+position = Vector2(-7.000061, 42)
+scale = Vector2(1.8109375, 1.8222222)
+texture = ExtResource("3_u2fll")
+
+[node name="Label" type="Label" parent="BadEndScence" unique_id=1688161450]
+z_index = 10
+offset_left = -71.0
+offset_top = 239.0
+offset_right = 102.0
+offset_bottom = 310.0
+text = "Bad End
+"
+
+[node name="NormalEndScence" type="Node2D" parent="." unique_id=5627578]
+
+[node name="NormalEnd" type="Sprite2D" parent="NormalEndScence" unique_id=1200855847]
+position = Vector2(-7.5, 44.5)
+scale = Vector2(1.8140625, 1.8138889)
+texture = ExtResource("4_lhpqg")
+
+[node name="Label" type="Label" parent="NormalEndScence" unique_id=1136251857]
+z_index = 10
+offset_left = -56.0
+offset_top = 231.0
+offset_right = 61.0
+offset_bottom = 259.0
+text = "Normal End"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1184329766]
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=1190484238]
+offset_left = 1014.0
+offset_top = 576.0
+offset_right = 1138.0
+offset_bottom = 633.0
+text = "Main Menu"
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_return_main_button_pressed"]

@@ -20,10 +20,6 @@ config/icon="res://icon.svg"
 QuestDatabase="*res://quests/quest_database.gd"
 DayManager="*res://day_manager.gd"
 
-[audio]
-
-buses/default_bus_layout="res://default_bus_layout.tres"
-
 [display]
 
 window/stretch/mode="canvas_items"

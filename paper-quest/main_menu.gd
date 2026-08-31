@@ -40,7 +40,7 @@ func _setup_slider(slider: HSlider, bus_name: String) -> void:
 
 func _on_play_pressed() -> void:
 	get_tree().change_scene_to_file(game_scene_path)
-
+	DayManager.reset_game()
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

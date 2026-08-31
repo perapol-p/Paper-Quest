@@ -15,16 +15,16 @@ extends Node
 ##   DayManager.reset_game()            -> เริ่มเกมใหม่ทั้งหมดตั้งแต่วันที่ 1
 
 ## จำนวนวันทั้งหมดที่เล่น (loop)
-@export var max_days: int = 5
+@export var max_days: int = 2
 
 ## จำนวนลูกค้าของวันแรก
-@export var base_customers: int = 5
+@export var base_customers: int = 1
 
 ## จำนวนลูกค้าที่เพิ่มขึ้นในแต่ละวันถัดไป
-@export var customers_increment: int = 2
+@export var customers_increment: int = 0
 
 ## จำนวนลูกค้าที่จะให้บริการใน "วันนี้" (คำนวณใหม่ทุกครั้งที่เริ่มวัน)
-var max_customers_per_day: int = 5
+var max_customers_per_day: int = 2
 
 var current_day: int = 1
 
