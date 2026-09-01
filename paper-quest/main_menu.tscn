@@ -191,7 +191,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
 theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
 text = "QUIT"
 
-[node name="CreditsButton" type="Button" parent="MenuPanel/VBox" unique_id=1132877619]
+[node name="CreditsButton" type="Button" parent="MenuPanel/VBox"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.75, 0.68, 0.65, 1)
@@ -202,8 +202,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
 theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
 text = "CREDITS"
 
-[node name="CreditsOverlay" type="Control" parent="." unique_id=2116169473]
-visible = false
+[node name="CreditsOverlay" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -211,8 +210,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+visible = false
 
-[node name="Dim" type="ColorRect" parent="CreditsOverlay" unique_id=1038263065]
+[node name="Dim" type="ColorRect" parent="CreditsOverlay"]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -221,35 +221,35 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0.65)
 
-[node name="Panel" type="PanelContainer" parent="CreditsOverlay" unique_id=765733273]
+[node name="Panel" type="PanelContainer" parent="CreditsOverlay"]
 layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -220.0
-offset_top = -160.0
-offset_right = 219.99878
-offset_bottom = 160.0
+offset_left = -240.0
+offset_top = -200.0
+offset_right = 239.99878
+offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
-[node name="Margin" type="MarginContainer" parent="CreditsOverlay/Panel" unique_id=1256576379]
+[node name="Margin" type="MarginContainer" parent="CreditsOverlay/Panel"]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 12
 
-[node name="VBox" type="VBoxContainer" parent="CreditsOverlay/Panel/Margin" unique_id=578490617]
+[node name="VBox" type="VBoxContainer" parent="CreditsOverlay/Panel/Margin"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="TopBar" type="HBoxContainer" parent="CreditsOverlay/Panel/Margin/VBox" unique_id=1008653531]
+[node name="TopBar" type="HBoxContainer" parent="CreditsOverlay/Panel/Margin/VBox"]
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="CreditsOverlay/Panel/Margin/VBox/TopBar" unique_id=790799757]
+[node name="TitleLabel" type="Label" parent="CreditsOverlay/Panel/Margin/VBox/TopBar"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.95, 0.9, 0.75, 1)
@@ -258,41 +258,44 @@ theme_override_font_sizes/font_size = 20
 text = "CREDITS"
 horizontal_alignment = 1
 
-[node name="CloseButton" type="Button" parent="CreditsOverlay/Panel/Margin/VBox/TopBar" unique_id=1868365069]
+[node name="CloseButton" type="Button" parent="CreditsOverlay/Panel/Margin/VBox/TopBar"]
 custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "X"
 
-[node name="Scroll" type="ScrollContainer" parent="CreditsOverlay/Panel/Margin/VBox" unique_id=34423175]
+[node name="Scroll" type="ScrollContainer" parent="CreditsOverlay/Panel/Margin/VBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Content" type="VBoxContainer" parent="CreditsOverlay/Panel/Margin/VBox/Scroll" unique_id=1710247763]
+[node name="Content" type="VBoxContainer" parent="CreditsOverlay/Panel/Margin/VBox/Scroll"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 12
 
-[node name="CreditsLabel" type="Label" parent="CreditsOverlay/Panel/Margin/VBox/Scroll/Content" unique_id=519165569]
+[node name="CreditsLabel" type="RichTextLabel" parent="CreditsOverlay/Panel/Margin/VBox/Scroll/Content"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.9, 0.88, 0.85, 1)
-theme_override_fonts/font = ExtResource("4_th_font")
-theme_override_font_sizes/font_size = 14
-text = "Project Lead & Game Director
+theme_override_colors/default_color = Color(0.9, 0.88, 0.85, 1)
+theme_override_fonts/normal_font = ExtResource("4_th_font")
+theme_override_fonts/bold_font = ExtResource("4_th_font")
+theme_override_font_sizes/normal_font_size = 14
+theme_override_font_sizes/bold_font_size = 15
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+text = "[center][b][color=#e8b84b]Project Lead & Game Director[/color][/b]
 พีรพล พรหมศร
 
-Art & Visual Assets
+[b][color=#e8b84b]Art & Visual Assets[/color][/b]
 พีรพล พรหมศร
 
-Lead Programmer
+[b][color=#e8b84b]Lead Programmer[/color][/b]
 ณพลพัทธ์ รามางกูร, ชุติพนธ์ แก้วสง่า
 
-Game Design & Mechanics
+[b][color=#e8b84b]Game Design & Mechanics[/color][/b]
 พีรพล พรหมศร, ณพลพัทธ์ รามางกูร, ชุติพนธ์ แก้วสง่า
 
-Music
-Kevin MacLeod"
-horizontal_alignment = 1
-autowrap_mode = 2
+[b][color=#e8b84b]Music[/color][/b]
+Kevin MacLeod[/center]"

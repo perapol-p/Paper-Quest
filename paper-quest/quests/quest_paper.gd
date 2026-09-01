@@ -38,4 +38,4 @@ func _refresh() -> void:
 	desc_label.text = quest_data.description
 	target_label.text = "%s   %dx" % [quest_data.target_name, quest_data.target_count]
 	rank_label.text = "Rank %s | %s" % [quest_data.quest_rank, quest_data.category_text]
-	reward_label.text = "รางวัล: %d Gold" % quest_data.reward_gold
+	reward_label.text = "Reward: %d Gold" % quest_data.reward_gold

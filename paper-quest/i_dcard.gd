@@ -95,6 +95,38 @@ var guilds = [
 
 
 # =====================================================
+# ค่าถ่วงน้ำหนักความสุ่ม (แก้ปัญหา "ผิดเยอะกว่าถูก")
+#
+# ปัญหาเดิม: เกมมี 3 จุดตรวจ (Rank / วันหมดอายุ / ตรากิลด์)
+# ที่สุ่ม "แยกกันเอง" แบบไม่รู้จักกัน (independent random)
+# ทำให้โอกาสที่ทุกจุดจะ "ถูกต้องครบ" (ควร Approve) ต่ำมาก
+# เพราะต้องคูณความน่าจะเป็นของทั้ง 3 จุดเข้าด้วยกัน
+# เช่นเดิม Rank พอ ~50%, วันหมดอายุยังไม่หมด ~50%, ตราแท้ 70%
+# -> โอกาส Approve จริง ๆ เหลือแค่ ~17.5% ที่เหลือคือ Denied ล้วน ๆ
+# ผลคือผู้เล่นเจอเคส "ต้อง Denied" ถี่กว่า "ต้อง Approve" มาก
+# และรู้สึกว่าทำไมกดไปกด Approve บ่อย ๆ แล้วผิดตลอด
+#
+# วิธีแก้: ยังคงสุ่มอยู่ (ไม่ fix ตายตัว) แต่ "ถ่วงน้ำหนัก" แต่ละจุดตรวจ
+# ให้เอนไปทาง "ถูกต้อง" (ควร Approve) มากกว่าเดิม โดยตั้งเป้าไว้ที่จุดละ ~80%
+# เมื่อคูณกันทั้ง 3 จุด (0.8 * 0.8 * 0.8 ≈ 51%) จะทำให้เคส Approve
+# มีสัดส่วนมากกว่าเคส Denied เล็กน้อย เกมจะรู้สึก "ถูกมากกว่าผิด" ตามที่ต้องการ
+# แต่ยังคงมีเคส Denied ปนอยู่พอสมควรให้ต้องตรวจสอบจริง ไม่ใช่กด Approve มั่ว ๆ ได้ทุกที
+#
+# ปรับค่าพวกนี้ได้อิสระ (0.0 - 1.0) เพื่อคุมความยาก/ความเป็นธรรมของเกม
+# =====================================================
+
+## โอกาสที่ Rank ของลูกค้าจะ "พอ" กับเควสที่ต้องทำ (rank_order[person_rank] >= rank_order[required_rank])
+const RANK_SUFFICIENT_CHANCE: float = 0.8
+
+## โอกาสที่บัตรจะ "ยังไม่หมดอายุ" เทียบกับวันที่ปัจจุบันในเกม
+const EXPIRE_VALID_CHANCE: float = 0.8
+
+const RANK_ORDER := {
+	"F": 0, "E": 1, "D": 2, "C": 3, "B": 4, "A": 5, "S": 6
+}
+
+
+# =====================================================
 # ข้อมูลลูกค้าปัจจุบัน
 #
 # สำคัญ:
@@ -183,7 +215,7 @@ func _ready() -> void:
 # สุ่มข้อมูลคน
 # =====================================================
 
-func generate_persona(npc_class_from_npc: String = "") -> void:
+func generate_persona(npc_class_from_npc: String = "", required_rank: String = "") -> void:
 
 	# =================================================
 	# สุ่มข้อมูลพื้นฐาน
@@ -199,17 +231,16 @@ func generate_persona(npc_class_from_npc: String = "") -> void:
 		person_class = classes.pick_random()
 	person_age = randi_range(18, 60)
 	person_id = randi_range(100000, 999999)
-	person_rank = ranks.pick_random()
+	person_rank = _pick_person_rank(required_rank)
 	person_guild = guilds.pick_random()
 
 
 	# =================================================
-	# สุ่มวันที่หมดอายุ
+	# สุ่มวันที่หมดอายุ (ถ่วงน้ำหนักด้วย EXPIRE_VALID_CHANCE)
 	# =================================================
 
-	expire_day = randi_range(1, 28)
-	expire_month = randi_range(1, 12)
-	expire_year = randi_range(1863, 1869)
+	var should_be_valid: bool = randf() < EXPIRE_VALID_CHANCE
+	_generate_expire_date(should_be_valid)
 
 
 	# =================================================
@@ -237,14 +268,93 @@ func generate_persona(npc_class_from_npc: String = "") -> void:
 
 
 # =====================================================
+# สุ่ม Rank ของลูกค้า โดยถ่วงน้ำหนักด้วย RANK_SUFFICIENT_CHANCE
+# ให้เอนไปทาง "พอ" กับ required_rank บ่อยกว่า "ไม่พอ"
+#
+# ถ้าไม่ได้ส่ง required_rank มา (หรือค่าไม่ถูกต้อง) จะสุ่มแบบเดิม (uniform)
+# =====================================================
+
+func _pick_person_rank(required_rank: String) -> String:
+
+	if not RANK_ORDER.has(required_rank):
+		return ranks.pick_random()
+
+	var req_idx: int = RANK_ORDER[required_rank]
+
+	var sufficient_ranks: Array = []
+	var insufficient_ranks: Array = []
+
+	for r in ranks:
+		if RANK_ORDER[r] >= req_idx:
+			sufficient_ranks.append(r)
+		else:
+			insufficient_ranks.append(r)
+
+	var want_sufficient: bool = randf() < RANK_SUFFICIENT_CHANCE
+
+	if want_sufficient and sufficient_ranks.size() > 0:
+		return sufficient_ranks.pick_random()
+
+	if not want_sufficient and insufficient_ranks.size() > 0:
+		return insufficient_ranks.pick_random()
+
+	# กรณี fallback (เช่น required_rank = "F" จะไม่มี rank ที่ "ไม่พอ" เลย)
+	# ก็ปล่อยให้ได้ rank ที่พอไปเลย ยังนับเป็นเคสถูกต้องอยู่ดี
+	if sufficient_ranks.size() > 0:
+		return sufficient_ranks.pick_random()
+
+	return ranks.pick_random()
+
+
+# =====================================================
+# สุ่มวันหมดอายุ โดยถ่วงน้ำหนักว่าจะ "ยังไม่หมดอายุ" (valid)
+# หรือ "หมดอายุแล้ว" (invalid) เทียบกับวันปัจจุบันในเกม (DayManager)
+# =====================================================
+
+func _generate_expire_date(valid: bool) -> void:
+
+	var cur_day: int = DayManager.date_day
+	var cur_month: int = DayManager.date_month
+	var cur_year: int = DayManager.date_year
+
+	if valid:
+		# สุ่มปีตั้งแต่ปีปัจจุบัน ถึงปีปัจจุบัน + 3 ปี (รับประกันไม่หมดอายุ)
+		expire_year = randi_range(cur_year, cur_year + 3)
+
+		if expire_year == cur_year:
+			expire_month = randi_range(cur_month, 12)
+			if expire_month == cur_month:
+				expire_day = randi_range(cur_day, 28)
+			else:
+				expire_day = randi_range(1, 28)
+		else:
+			expire_month = randi_range(1, 12)
+			expire_day = randi_range(1, 28)
+	else:
+		# สุ่มปีตั้งแต่ปีปัจจุบัน - 3 ปี ถึงปีปัจจุบัน (รับประกันหมดอายุแล้ว)
+		expire_year = randi_range(cur_year - 3, cur_year)
+
+		if expire_year == cur_year:
+			expire_month = randi_range(1, cur_month)
+			if expire_month == cur_month:
+				# กันกรณี cur_day == 1 จะไม่มีวันที่ "น้อยกว่า" เหลือ
+				expire_day = randi_range(1, max(cur_day - 1, 1))
+			else:
+				expire_day = randi_range(1, 28)
+		else:
+			expire_month = randi_range(1, 12)
+			expire_day = randi_range(1, 28)
+
+
+# =====================================================
 # Reset Card
 #
 # เรียกเมื่อลูกค้าคนใหม่มาถึง
 # =====================================================
 
-func reset_card(npc_class_from_npc: String = "") -> void:
+func reset_card(npc_class_from_npc: String = "", required_rank: String = "") -> void:
 
-	generate_persona(npc_class_from_npc)
+	generate_persona(npc_class_from_npc, required_rank)
 
 	if state == State.EXPANDED:
 		_close()

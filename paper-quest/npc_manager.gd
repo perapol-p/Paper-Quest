@@ -46,11 +46,25 @@ func _on_npc_arrived() -> void:
 
 	await get_tree().create_timer(0.6).timeout
 
-	if id_card:
-		id_card.reset_card(current_npc.get_npc_class())
+	# =====================================================
+	# สำคัญ: ต้องสุ่ม "เควส" ก่อน แล้วค่อยสุ่ม "บัตร" ทีหลัง
+	#
+	# เหตุผล: อยากให้บัตรของลูกค้ารู้ว่าเควสต้องการ Rank อะไร
+	# เพื่อจะได้ถ่วงน้ำหนักการสุ่ม Rank ของลูกค้าให้ "พอ" บ่อยกว่า "ไม่พอ"
+	# (ดูคอมเมนต์ใน i_dcard.gd -> RANK_SUFFICIENT_CHANCE)
+	# แก้ปัญหาที่จุดตรวจแต่ละจุด (rank / วันหมดอายุ / ตรากิลด์) สุ่มแยกกันเอง
+	# แล้วคูณกันจนโอกาส "ถูกต้องทุกจุด" ต่ำมาก ทำให้ผู้เล่นเจอ "ผิด" บ่อยกว่า "ถูก"
+	# =====================================================
 
 	if quest_paper:
 		quest_paper.reset_to_closed_with_new_quest()
+
+	var required_rank: String = ""
+	if quest_paper and quest_paper.quest_data:
+		required_rank = quest_paper.quest_data.quest_rank
+
+	if id_card:
+		id_card.reset_card(current_npc.get_npc_class(), required_rank)
 
 
 func finish_current_npc() -> void:

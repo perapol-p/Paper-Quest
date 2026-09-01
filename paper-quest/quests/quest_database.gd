@@ -129,8 +129,9 @@ var rank_type_pool: Dictionary = {
 var rank_pool: Array[String] = ["1 คน", "2 คน+", "3 คน+"]
 
 ## โอกาสที่ตรากิลด์บนใบเควสจะเป็นของจริง (0.0 - 1.0)
-## 0.7 = จริง 70% / ปลอม 30%
-const GUILD_AUTHENTIC_CHANCE: float = 0.7
+## ปรับจาก 0.7 -> 0.8 เพื่อให้เข้าชุดกับ RANK_SUFFICIENT_CHANCE / EXPIRE_VALID_CHANCE ใน i_dcard.gd
+## (ดูคอมเมนต์ใหญ่ในไฟล์นั้นว่าทำไมต้อง 0.8 ทั้ง 3 ค่า)
+const GUILD_AUTHENTIC_CHANCE: float = 0.8
 
 
 func _ready() -> void:

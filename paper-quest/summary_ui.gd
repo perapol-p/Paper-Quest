@@ -30,10 +30,10 @@ func _on_day_finished(correct: int, wrong: int, total: int, day: int, is_last_da
 func _show_day_summary(correct: int, wrong: int, total: int, day: int) -> void:
 	_waiting_for_final_restart = false
 
-	title_label.text = "สรุปผลวันที่ %d (ลูกค้า %d คน)" % [day, total]
-	correct_label.text = "ทำถูก: %d คน" % correct
-	wrong_label.text = "ทำผิด: %d คน" % wrong
-	restart_button.text = "วันต่อไป"
+	title_label.text = "Day %d Summary (%d customers)" % [day, total]
+	correct_label.text = "Correct: %d" % correct
+	wrong_label.text = "Wrong: %d" % wrong
+	restart_button.text = "Next Day"
 
 
 func _show_final_ending() -> void:
@@ -51,10 +51,10 @@ func _show_final_ending() -> void:
 		_:
 			ending_text = "Bad End"
 
-	title_label.text = "จบเกม! (%s)" % ending_text
-	correct_label.text = "ทำถูกรวม: %d / %d คน" % [DayManager.total_correct, DayManager.total_customers]
-	wrong_label.text = "ความแม่นยำ: %.1f%%" % accuracy
-	restart_button.text = "สรุป"
+	title_label.text = "Game Over! (%s)" % ending_text
+	correct_label.text = "Total Correct: %d / %d" % [DayManager.total_correct, DayManager.total_customers]
+	wrong_label.text = "Accuracy: %.1f%%" % accuracy
+	restart_button.text = "Summary"
 
 
 func _on_restart_pressed() -> void:
