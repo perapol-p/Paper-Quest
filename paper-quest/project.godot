@@ -28,6 +28,10 @@ SfxManager="*uid://ckpxftpmkhl8y"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/User/Documents/Project/Paper-Quest/Video/Demo_Gameplay.avi"
+
 [input]
 
 Approve={
